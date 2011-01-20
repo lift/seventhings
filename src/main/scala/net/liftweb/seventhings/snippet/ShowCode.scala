@@ -16,7 +16,7 @@ object ShowCode {
       code <- LiftRules.loadResource("/src/scala"+fileName) ?~ 
         ("Cannot find "+fileName)
 
-    } yield <div>Filename: <a href={"http://github.com/lift/seventhings/src/main/scala"+fileName}>{fileName}</a>
+    } yield <div style="text-align: center"><tt>Listing: <a href={"https://github.com/lift/seventhings/tree/master/src/main/scala"+fileName}>{fileName}</a></tt>
   <pre class="listing brush: scala">{new String(code, "UTF-8")}</pre>
   </div>
     
