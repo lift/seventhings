@@ -27,7 +27,7 @@ class Boot {
       Menu("parallel", "Parallel Rendering") / "parallel",
       Menu("comet", "Comet & Ajax") / "comet",
       Menu("wiring", "Wiring") / "wiring",
-      Menu("tempales", "Designer Friendly Templates") / "templates",
+      Menu("templates", "Designer Friendly Templates") / "templates",
       Menu("wizard", "Wizard") / "wizard",
       Menu("security", "Security") / "security")
 
