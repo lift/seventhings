@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Parallel</title>
+  </head>
+  <body class="lift:content_id=main">
+    <div id="main" class="lift:surround?with=default;at=content">
+      <p>
+	<big>
+	  <big>
+	    Lift can parallelize page rendering. 
+	    This is a huge win if you need to consult external
+	    servers while rendering a page.  If you need to
+	    go out to 10 different ad servers and each one takes
+	    half a second to respond, you want to run those in parallel:
+	  </big>
+	</big>
+      </p>
+
+      <div class="lift:FetchAd?parallel=true" 
+	   style="margin: 12px; border: 1px solid blue">
+        Ad server #1: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #2: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #3: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #4: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #5: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #6: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #7: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #8: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #9: <span class="ad">The Ad</span>
+      </div>
+
+      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+	Ad server #10: <span class="ad">The Ad</span>
+      </div>
+
+
+      <big>
+	<big>
+	  The markup is very simple:
+	</big>
+      </big>
+      <pre class="lift:ShowCode?name=/parallel.html;start=FetchAd;end=FetchAd">view code</pre>
+
+      <div>
+	<big>
+	  <big>
+	    That's not a lot of markup code. When you mark the
+	    snippet as <tt>parallel</tt>, Lift forwards the
+	    snippet calculation to another thread in a pool
+	    of threads.  Lift continues to evaluate the markup
+	    on the page in parallel and recombines the results
+	    before the page is sent to the browser.
+	    Let's look at the <a href="http://stable.simply.liftweb.net/#sec:Snippets">snippet</a> code:
+	  </big>
+	</big>
+      </div>
+
+      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/FetchAd.scala;start=**">view code</pre>
+
+
+      <div>
+	<big>
+	  <big>
+	    Once again, something that's hard or impossible
+	    in other web frameworks is is trivial in Lift.
+	    How much does this matter?  Is your page load time
+	    slow because you're going out to lots and lots of
+	    different back end servers while composing a page?
+	    Lift makes that kind of work parallelizable.
+	  </big>
+	</big>
+      </div>
+
+      
+    </div>
+  </body>
+</html>

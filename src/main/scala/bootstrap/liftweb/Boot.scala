@@ -22,12 +22,14 @@ class Boot {
 
     // Build SiteMap
     def sitemap = SiteMap(
-      Menu.i("Home") / "index", // the simple way to declare a menu
-
-      // more complex because this menu allows anything in the
-      // /static path to be visible
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
-	       "Static Content")))
+      Menu.i("Home") / "index",
+      Menu("lazy", "Lazy Loading") / "lazy",
+      Menu("parallel", "Parallel Rendering") / "parallel",
+      Menu("comet", "Comet & Ajax") / "comet",
+      Menu("wiring", "Wiring") / "wiring",
+      Menu("tempales", "Designer Friendly Templates") / "templates",
+      Menu("wizard", "Wizard") / "wizard",
+      Menu("security", "Security") / "security")
 
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
