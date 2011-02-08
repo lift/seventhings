@@ -1,4 +1,4 @@
-package net.liftweb.seventhings;
+package net.liftweb.seventhings.snippet;
 
 import net.liftweb.http.SHtmlJ;
 import net.liftweb.http.SessionVar;
@@ -9,20 +9,20 @@ import scala.Function1;
 
 import static net.liftweb.http.js.JsCmds.SetValById;
 
-public class JChatIn {
+public class ChatInJ {
 
 /*
 These are the compile errors it throws:
 
-[error] /Users/tuhlmann/entw/aktuell/LiftJ/seventhings/src/main/java/net/liftweb/seventhings/JChatIn.java:24: cannot find symbol
+[error] /Users/tuhlmann/entw/aktuell/LiftJ/seventhings/src/main/java/net/liftweb/seventhings/ChatInJ.java:24: cannot find symbol
 [error] symbol  : constructor SessionVar()
 [error] location: class net.liftweb.http.SessionVar<java.lang.Integer>
 [error]   final SessionVar<Integer> lineCnt = new SessionVar<Integer>(){}; // because SessionVar is abstract
 [error]                                       ^
-[error] /Users/tuhlmann/entw/aktuell/LiftJ/seventhings/src/main/java/net/liftweb/seventhings/JChatIn.java:24: <anonymous net.liftweb.seventhings.JChatIn$1> is not abstract and does not override abstract method registerCleanupFunc(scala.Function1<java.lang.Object,java.lang.Object>) in net.liftweb.util.AnyVarTrait
+[error] /Users/tuhlmann/entw/aktuell/LiftJ/seventhings/src/main/java/net/liftweb/seventhings/ChatInJ.java:24: <anonymous net.liftweb.seventhings.snippet.ChatInJ$1> is not abstract and does not override abstract method registerCleanupFunc(scala.Function1<java.lang.Object,java.lang.Object>) in net.liftweb.util.AnyVarTrait
 [error]   final SessionVar<Integer> lineCnt = new SessionVar<Integer>(){}; // because SessionVar is abstract
 [error]                                                                ^
-[error] /Users/tuhlmann/entw/aktuell/LiftJ/seventhings/src/main/java/net/liftweb/seventhings/JChatIn.java:27: <anonymous net.liftweb.seventhings.JChatIn$2> is not abstract and does not override abstract method <A>andThen$mcDD$sp(scala.Function1<java.lang.Double,A>) in scala.Function1
+[error] /Users/tuhlmann/entw/aktuell/LiftJ/seventhings/src/main/java/net/liftweb/seventhings/ChatInJ.java:27: <anonymous net.liftweb.seventhings.snippet.ChatInJ$2> is not abstract and does not override abstract method <A>andThen$mcDD$sp(scala.Function1<java.lang.Double,A>) in scala.Function1
 [error]       return Css.sel("*", SHtmlJ.j().onSubmit(new Function1<String, Object>(){
 [error]                                                                              ^
 
