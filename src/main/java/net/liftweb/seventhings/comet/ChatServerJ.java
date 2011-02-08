@@ -1,5 +1,7 @@
 package net.liftweb.seventhings.comet;
 
+import net.liftweb.actor.JavaActor;
+import net.liftweb.actor.JavaActorBase.Receive;
 import net.liftweb.actor.LiftActor;
 import net.liftweb.http.ListenerManager;
 import scala.PartialFunction;
@@ -9,7 +11,7 @@ import java.util.Vector;
 /**
    * The chat server
    */
-  public class ChatServerJ implements LiftActor, ListenerManager {
+  public class ChatServerJ extends JavaActor {
 
     private static ChatServerJ INSTANCE = null;
 
@@ -29,6 +31,11 @@ import java.util.Vector;
     // what we send to listeners on update
     protected Object createUpdate() {
         return msgs;
+    }
+
+    @Receive
+    public void receive(Object obj) {
+
     }
 
     // handle incoming messages

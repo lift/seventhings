@@ -3,6 +3,7 @@ package net.liftweb.seventhings.snippet;
 import net.liftweb.http.SHtmlJ;
 import net.liftweb.http.SessionVar;
 import net.liftweb.http.js.JE;
+import net.liftweb.seventhings.comet.ChatServerJ;
 import net.liftweb.util.Css;
 import net.liftweb.util.CssSel;
 import scala.Function1;
@@ -41,13 +42,15 @@ These are the compile errors it throws:
   // private object lineCnt extends SessionVar(0)
   final SessionVar<Integer> lineCnt = new SessionVar<Integer>(){}; // because SessionVar is abstract
 
+  // TODO onSubmit needs to accept the new FuncX
   public CssSel render() {
       return Css.sel("*", SHtmlJ.j().onSubmit(new Function1<String, Object>(){
           public Object apply(String v) {
               String s = v.toString();
               int lineCntIs = (Integer)lineCnt.is();
               if (s.length() < 50 && lineCntIs < 20) {
-                  // Call ChatServer
+                  // Call ChatServer: HOW
+                  // ChatServerJ.j() ...
                   lineCnt.set(lineCntIs + 1);
               }
               return new SetValById("chat_in", new JE.Str("")); // clear the input box
