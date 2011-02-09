@@ -50,4 +50,20 @@ import java.util.Vector;
 
   }
 
+/* PartialFunction replacement in Java
+
+new CaseMatcher(
+  new IfMatch(new Predicate<T>() {
+          public boolean isMatch(T value) {
+            if (value instanceof Bla) return true;
+        }}, new Func<T, Z>() {
+          public Z apply(T value) {...}
+        }),
+  new IfMatch(...),
+  new IfMatch(...)
+).apply(T value)
+
+
+ */
+
 
