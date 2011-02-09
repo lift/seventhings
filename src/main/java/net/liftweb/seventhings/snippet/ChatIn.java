@@ -1,5 +1,6 @@
 package net.liftweb.seventhings.snippet;
 
+
 import net.liftweb.http.SHtmlJ;
 import net.liftweb.http.SessionVar;
 import net.liftweb.http.VarsJ;
@@ -24,22 +25,22 @@ public class ChatIn {
 
         // associate a function with the submission of the form element
         return SHtmlJ.j().onSubmit(Func.lift(new Func1<String, Object>() {
-            public Object apply(String s) {
-                // get the session-specific line count
-                int lineCntIs = lineCnt.is();
+          public Object apply(String s) {
+            // get the session-specific line count
+            int lineCntIs = lineCnt.is();
 
-                // if the message is small enough and the session
-                // hasn't sent too many messages, send the String to the ChatServer
-                if (s.length() < 50 && lineCntIs < 20) {
-                    ChatServer.j().send(s);
+            // if the message is small enough and the session
+            // hasn't sent too many messages, send the String to the ChatServer
+            if (s.length() < 50 && lineCntIs < 20) {
+              ChatServer.j().send(s);
 
-                    // update the line count
-                    lineCnt.set(lineCntIs + 1);
-                }
-
-                // clear the browser's input box
-                return new JsCmds.SetValById("chat_in", new JE.Str("")); // clear the input box
+              // update the line count
+              lineCnt.set(lineCntIs + 1);
             }
+
+            // clear the browser's input box
+            return new JsCmds.SetValById("chat_in", new JE.Str("")); // clear the input box
+          }
         }
         ));
     }

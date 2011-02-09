@@ -1,10 +1,12 @@
 package bootstrap.liftweb;
 
 
-import net.liftweb.http.*;
+import net.liftweb.http.Html5Properties;
+import net.liftweb.http.HtmlProperties;
+import net.liftweb.http.LiftRulesJ;
+import net.liftweb.http.Req;
 import net.liftweb.http.js.JsCmd;
 import net.liftweb.http.provider.HTTPRequest;
-import net.liftweb.sitemap.Menu;
 import net.liftweb.sitemap.MenuJ;
 import net.liftweb.sitemap.SiteMap;
 import net.liftweb.sitemap.SiteMapJ;

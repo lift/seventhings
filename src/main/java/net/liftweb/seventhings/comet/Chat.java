@@ -1,19 +1,18 @@
 package net.liftweb.seventhings.comet;
 
 import net.liftweb.common.SimpleActor;
+import net.liftweb.common.SimpleVector;
 import net.liftweb.http.CometActorJWithCometListener;
 import net.liftweb.http.RenderOut;
-import net.liftweb.util.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import net.liftweb.util.ClearClearable;
+import net.liftweb.util.SeqStringIterableConst;
 
 /**
  * The Comet (server push) Chat component
  */
 public class Chat extends CometActorJWithCometListener {
     // private state
-    private List<String> msgs = new ArrayList<String>(); // private state
+    private SimpleVector<String> msgs = new SimpleVector<String>(); // private state
 
     // register this component
     public SimpleActor registerWith() {
@@ -21,7 +20,7 @@ public class Chat extends CometActorJWithCometListener {
     }
 
     // handle an incoming message containing a List<String>
-    @Receive public void messages(List<String> updatedMessages) {
+    @Receive public void messages(SimpleVector updatedMessages) {
         msgs = updatedMessages;
         reRender();
     }
