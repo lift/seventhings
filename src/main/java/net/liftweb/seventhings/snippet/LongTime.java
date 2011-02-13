@@ -9,6 +9,9 @@ import java.security.SecureRandom;
 import java.util.Date;
 import java.util.Random;
 
+/**
+ * Do something that takes a long time to do
+ */
 public class LongTime {
 
     SecureRandom _random = new SecureRandom();

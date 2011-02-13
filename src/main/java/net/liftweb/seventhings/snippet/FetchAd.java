@@ -6,8 +6,9 @@ import scala.xml.NodeSeq;
 
 public class FetchAd {
 
-    // return the code that transforms the template input to
-    // the dynamic output
+    /** return the code that transforms the template input to
+        the dynamic output
+    */
     public Function1<NodeSeq, NodeSeq> render() {
 
         // sleep for 1/2 second

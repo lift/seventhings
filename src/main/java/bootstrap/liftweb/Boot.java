@@ -25,7 +25,7 @@ public class Boot {
                 MenuJ.j().i("Comet & Ajax").path("comet"),
                 MenuJ.j().i("Wiring").path("wiring"),
                 MenuJ.j().i("Designer Friendly Templates").path("templates"),
-                MenuJ.j().i("Wizard").path("Wizard"),
+                MenuJ.j().i("Wizard").path("wizard"),
                 MenuJ.j().i("Security").path("security"));
 
         /*
