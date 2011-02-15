@@ -5,23 +5,31 @@ import net.liftweb.http.SHtmlJ;
 import net.liftweb.http.WiringUI;
 import net.liftweb.http.js.JsCmd;
 import net.liftweb.http.js.JsCmds;
+import net.liftweb.http.js.JsExp;
+import net.liftweb.http.js.jquery.JqJsCmds;
 import net.liftweb.http.js.jquery.JqWiringSupport;
-import net.liftweb.seventhings.lib.HelpersJ;
-import net.liftweb.seventhings.lib.XmlJBridge;
+import net.liftweb.seventhings.lib.*;
+import net.liftweb.util.*;
 import net.liftweb.util.Css;
-import net.liftweb.util.ValueCell;
+import net.liftweb.util.Func;
+import net.liftweb.util.Func0;
+import net.liftweb.util.Func1;
+import net.liftweb.util.Func2;
 import scala.Function1;
 import scala.Function2;
 import scala.collection.Iterator;
+import scala.collection.immutable.Nil;
 import scala.collection.mutable.ListBuffer;
 import scala.runtime.AbstractFunction1;
 import scala.runtime.AbstractFunction2;
 import scala.xml.Elem;
 import scala.xml.NodeSeq;
 import scala.xml.Text;
+import scala.collection.JavaConversions;
 
 import javax.swing.text.Element;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
 import static net.liftweb.seventhings.lib.XmlJ.*;
 
@@ -53,8 +61,8 @@ public class InvoiceWiring {
 
       final InvoiceWiring iWiring;
 
-      final ValueCell invoices;
-      final ValueCell taxRate;
+      final net.liftweb.util.ValueCell invoices;
+      final net.liftweb.util.ValueCell taxRate;
       final net.liftweb.util.Cell subtotal;
       final net.liftweb.util.Cell taxable;
       final net.liftweb.util.Cell tax;
@@ -64,18 +72,18 @@ public class InvoiceWiring {
           this.iWiring = iWiring;
           ListBuffer buf = new ListBuffer();
           buf.$plus$eq(iWiring.newLine());
-          invoices = new ValueCell(buf.toList());
-          taxRate  = new ValueCell(0.05d);
+          invoices = new net.liftweb.util.ValueCell(buf.toList());
+          taxRate  = new net.liftweb.util.ValueCell(0.05d);
 
-          subtotal = invoices.lift(new AbstractFunction1<scala.collection.immutable.List<Line>, Double>(){
+          subtotal = invoices.lift(Func.lift(new Func1<scala.collection.immutable.List<Line>, Double>(){
               public Double apply(scala.collection.immutable.List<Line> in) {
-                  return in.foldLeft(0d, new AbstractFunction2<Double, Line, Double>(){
+                  return in.foldLeft(0d, Func.lift(new Func2<Double, Line, Double>(){
                       public Double apply(Double in, Line line) {
                           return in + line.price;
                       }
-                  });
+                  }));
               }
-          });
+          }));
 
           taxable = invoices.lift(new AbstractFunction1<scala.collection.immutable.List<Line>, Double>(){
               public Double apply(scala.collection.immutable.List<Line> in) {
@@ -91,17 +99,17 @@ public class InvoiceWiring {
               }
           });
 
-          tax = taxRate.lift(taxable, new AbstractFunction2<Double, Double, Double>(){
+          tax = taxRate.lift(taxable, Func.lift(new Func2<Double, Double, Double>(){
               public Double apply(Double left, Double right) {
                   return left * right;
               }
-          });
+          }));
 
-          total = subtotal.lift(tax, new AbstractFunction2<Double, Double, Double>(){
+          total = subtotal.lift(tax, Func.lift(new Func2<Double, Double, Double>(){
               public Double apply(Double left, Double right) {
                   return left + right;
               }
-          });
+          }));
       }
 
   }
@@ -138,13 +146,25 @@ public class InvoiceWiring {
      */
     public Elem taxRate() {
         return SHtmlJ.j().ajaxText(info.taxRate.get().toString(),
-                doubleToJsCmd(new AbstractFunction1<Double, Object>() {
+                doubleToJsCmd(Func.lift(new Func1<Double, Object>() {
                     public Object apply(Double d) {
                         return info.taxRate.set(d);
                     }
-                }), null);
+                })), ListJ.Nil());
     }
 
+    /**
+ * Add a line to the input
+       */
+    public Function1<NodeSeq, NodeSeq> addLine() {
+        final scala.Tuple2<String, JsExp> ajax = SHtmlJ.j().ajaxInvoke(net.liftweb.util.Func.lift(new net.liftweb.util.Func0<JsCmd>() {
+            public JsCmd apply() {
+                return JqJsCmdsJ.appendHtml("invoice_lines", renderLine(appendLine()));
+            }
+        }));
+        
+        return Css.sel("* [onclick]", ((JsExp)ajax._2()).toJsCmd());
+    }
 
     /**
      * Draw all the input lines
@@ -181,10 +201,10 @@ public class InvoiceWiring {
 
         Elem el = elem("div", attr("id", theLine.guid),
 
-                SHtmlJ.j().ajaxText(theLine.name, new AbstractFunction1<String, JsCmd>() {
+                SHtmlJ.j().ajaxText(theLine.name, Func.lift(new Func1<String, JsCmd>() {
                     public JsCmd apply(final String s) {
                         System.out.println("JsCmd APPLY. s="+s);
-                        return mutateLine(theLine.guid, new AbstractFunction1<Line, Line>() {
+                        return mutateLine(theLine.guid, new Func1<Line, Line>() {
                             public Line apply(Line in) {
                                 System.out.println("mutateLine Func. Line="+in);
                                 Line out = new Line(in.guid, s, in.price, in.taxable);
@@ -193,39 +213,32 @@ public class InvoiceWiring {
                             }
                         });
                     }
-                }, null),
+                }), ListJ.Nil()),
 
-                SHtmlJ.j().ajaxText(""+theLine.price, new AbstractFunction1<String, JsCmd>() {
+                SHtmlJ.j().ajaxText(""+theLine.price, Func.lift(new Func1<String, JsCmd>() {
                     public JsCmd apply(final String s) {
                         final double dbl = Double.parseDouble(s);
-                        return mutateLine(theLine.guid, new AbstractFunction1<Line, Line>() {
+                        return mutateLine(theLine.guid, new Func1<Line, Line>() {
                             public Line apply(Line in) {
                                 return new Line(in.guid, in.name, dbl, in.taxable);
                             }
                         });
                     }
-                }, null),
+                }), ListJ.Nil()),
 
-                SHtmlJ.j().ajaxCheckbox(theLine.taxable, new AbstractFunction1<Boolean, JsCmd>() {
+                SHtmlJ.j().ajaxCheckbox(theLine.taxable, Func.lift(new Func1<Boolean, JsCmd>() {
+                    @Override
                     public JsCmd apply(final Boolean b) {
-                        return mutateLine(theLine.guid, new AbstractFunction1<Line, Line>() {
+                        return mutateLine(theLine.guid, new Func1<Line, Line>(){
                             public Line apply(Line in) {
                                 return new Line(in.guid, in.name, in.price, b);
                             }
                         });
                     }
-                }, null));
+                }), ListJ.Nil()));
 
         return el;
 
-
-//      <div id={guid}>
-//      {ajaxText(name, s => mutateLine(guid)(_.copy(name = s)))}
-//
-//      {ajaxText(price.toString, (d: Double) => mutateLine(guid) {_.copy(price = d)})}
-//
-//      {ajaxCheckbox(theLine.taxable, b => mutateLine(guid) {_.copy(taxable = b)})}
-//      </div>
     }
 
     private Line appendLine() {
@@ -244,45 +257,38 @@ public class InvoiceWiring {
     /**
      * Mutate a line and update the Info field
      */
-    private JsCmd mutateLine(final String guid, final Function1<Line, Line> f) {
-      scala.collection.immutable.List all = (scala.collection.immutable.List) info.invoices.get();
-      scala.collection.immutable.List head = all.filter(new AbstractFunction1<Line, Boolean>() {
-          public Boolean apply(Line line) {
-              return line.guid.equals(guid);
-          }
-      });
+    private JsCmd mutateLine(final String guid, final Func1<Line, Line> fIn) {
+        final Function1<Line, Line> f = Func.lift(fIn);
+        scala.collection.immutable.List all = (scala.collection.immutable.List) info.invoices.get();
 
-      final ListBuffer buf = new ListBuffer();
-      head.foreach(new AbstractFunction1<Line, Void>() {
-          public Void apply(Line line) {
-              buf.$plus$eq(f.apply(line));
-              return null;
-          }
-      });
+        java.util.List<Line> head = new java.util.ArrayList<Line>();
+        java.util.List<Line> rest = new java.util.ArrayList<Line>();
+        for (Object o : JavaConversions.asJavaIterable(all)) {
+            Line l = (Line) o;
+            if (l.guid.equals(guid)) {
+                head.add((Line)f.apply(l));
+            } else {
+                rest.add(l);
+            }
+        }
 
-      scala.collection.immutable.List rest = all.filter(new AbstractFunction1<Line, Boolean>(){
-          public Boolean apply(Line line) {
-              return !line.guid.equals(guid);
-          }
-      });
+        head.addAll(rest);
 
-      info.invoices.set(rest.$colon$colon$colon(head));
-      return JsCmds.Noop();
+        info.invoices.set(JavaConversions.asScalaBuffer(head).toList());
+        return JsCmds.Noop();
     }
 
-  private Function2<Double, NodeSeq, NodeSeq> doubleDraw() {
-    return new AbstractFunction2<Double, NodeSeq, NodeSeq>() {
-        public NodeSeq apply(Double d, NodeSeq ns) {
-            return new Text(NumberFormat.getCurrencyInstance().format(d));
-        }
-    };
-
-
-  }
+    private Function2<Double, NodeSeq, NodeSeq> doubleDraw() {
+        return Func.lift(new net.liftweb.util.Func2<Double, NodeSeq, NodeSeq>() {
+            public NodeSeq apply(Double d, NodeSeq ns) {
+                return new Text(NumberFormat.getCurrencyInstance().format(d));
+            }
+        });
+    }
 
 
     private Function1<String, JsCmd> doubleToJsCmd(final Function1<Double, Object> in) {
-        return new AbstractFunction1<String, JsCmd>() {
+        return Func.lift(new Func1<String, JsCmd>() {
             public JsCmd apply(String str) {
                 try {
                     double d = Double.parseDouble(str);
@@ -291,7 +297,7 @@ public class InvoiceWiring {
                     return JsCmds.Noop();
                 }
             }
-        } ;
+        }) ;
     }
 
 }

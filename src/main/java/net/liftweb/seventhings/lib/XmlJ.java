@@ -39,6 +39,16 @@ public class XmlJ {
         return el;
     }
 
+    public static scala.xml.Elem nselem(String prefix, String label, MetaData attributes, scala.xml.Node... children) {
+        scala.xml.Elem el = new scala.xml.Elem(prefix, label, attributes, topScope(), elemSeq(children));
+        return el;
+    }
+
+    public static scala.xml.Elem nselem(String prefix, String label, scala.xml.Node... children) {
+        scala.xml.Elem el = new scala.xml.Elem(prefix, label, xmlNull(), topScope(), elemSeq(children));
+        return el;
+    }
+
     public static MetaData attr(String key, String value) {
         return new scala.xml.UnprefixedAttribute(key, new scala.xml.Text(value), xmlNull());
     }

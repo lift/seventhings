@@ -4,23 +4,45 @@ import net.liftweb.http.AbstractScreen;
 import net.liftweb.http.SJ;
 import net.liftweb.http.js.JsCmd;
 import net.liftweb.http.js.jquery.JqJsCmds;
+import net.liftweb.seventhings.lib.JqJsCmdsJ;
 import net.liftweb.seventhings.lib.WizardJ;
+import net.liftweb.util.Func;
+import net.liftweb.util.Func0;
 import net.liftweb.wizard.Wizard;
 
+/**
+ * An example of a wizard in Lift
+ */
 public class MyWizardJava extends WizardJ {
 
   public JsCmd calcAjaxOnDone() {
-      return null;
-     //JqJsCmds.Unblock;
+      return JqJsCmdsJ.j().unblock();
   }
 
+  // define the first screen
 
   // We ask the parent's name if the person is under 18
-//  private WizardJ.Screen parentName = new WizardJ.Screen() {
-//    String parentName = AbstractScreen.field(SJ.j().$qmark("Mom or Dad's name", "",
-//                           AbstractScreen.valMinLen(2, SJ.j().$qmark("Name Too Short")),
-//                           AbstractScreen.valMaxLen(40, SJ.j().$qmark("Name Too Long"))));
-//  };
+  private WizardJ.ScreenJ parentNameObj = new WizardJ.ScreenJ() {
+    String parentName = field(SJ.j().$qmark("Mom or Dad's name"), "",
+                           valMinLen(Func.lift(new Func0<Integer>() {
+                               public Integer apply() {
+                                   return 2;
+                               }
+                           }), Func.lift(new Func0<String>(){
+                               public String apply() {
+                                   return SJ.j().$qmark("Name Too Short");
+                               }
+                           })),
+                           valMaxLen(Func.lift(new Func0<Integer>(){
+                               public Integer apply() {
+                                   return 40;
+                               }
+                           }), Func.lift(new Func0<String>(){
+                               public String apply() {
+                                   return SJ.j().$qmark("Name Too Long");
+                               }
+                           })));
+  };
 
 
   // we ask for the favorite pet

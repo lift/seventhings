@@ -4,6 +4,7 @@ package snippet
 import net.liftweb._
 import http._
 import js.jquery.JqJsCmds._
+import util.Func0
 import wizard._
 import util.Helpers._
 
@@ -32,7 +33,7 @@ object MyWizard extends Wizard {
   val parentName = new Screen {
     val parentName = field(S ? "Mom or Dad's name", "",
                            valMinLen(2, S ? "Name Too Short"),
-      valMaxLen(40, S ? "Name Too Long"))
+                           valMaxLen(40, S ? "Name Too Long"))
   }
 
   // we ask for the favorite pet
@@ -50,6 +51,6 @@ object MyWizard extends Wizard {
   }
 }
 
-object AjaxRunner {
+object AjaxRunnerScala {
   def render = "* [onclick]" #> SHtml.ajaxInvoke(() => ModalDialog(<div><lift:MyWizard ajax="true"/></div>))
 }

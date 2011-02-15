@@ -23,7 +23,7 @@ public class ShowCode {
         }
 
         if (fileName.endsWith(".java")) {
-            return "scala";
+            return "java";
         }
 
         return "scala";
