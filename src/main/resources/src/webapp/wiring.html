@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Wiring</title>
+  </head>
+  <body class="lift:content_id=main">
+    <div id="main" class="lift:surround?with=default;at=content">
+      <div>
+	<big>
+	  <big>
+	    As web pages get more complex, there are a lot
+	    of interdependent items displayed on the page.  For
+	    example, you may have a list of invitations along
+	    with a count of invitations.  As you accept or 
+	    reject each invitation (assuming this is done via
+	    Ajax), you want the invation count to be automatically
+	    updated.  Lift's Wiring allows you to declare relationships
+	    among the various elements on a page and when any of the
+	    precedent elements change, the dependent items
+	    are redisplayed on the next HTTP response (Ajax or Comet).
+	  </big>
+	</big>
+      </div>
+
+      <br>
+
+      <div>
+	<big>
+	  <big>
+	    Those are a lot of words.  Let's see how we can
+	    build an invoice screen 
+	  </big>
+	</big>
+      </div>
+
+      <!-- The Invoice Area -->
+      <div>
+	<div id="invoice_lines" class="lift:InvoiceWiring.showLines">input goes here</div>
+	<div>
+	  <button class="lift:InvoiceWiring.addLine?div=invoice_lines">Add</button>
+	</div>
+
+	<div>Subtotal: <span class="lift:InvoiceWiring.subtotal">subtotal</span></div>
+
+	<div>Tax Rate: <input class="lift:InvoiceWiring.taxRate"></div>
+
+	<div>Taxable: <span class="lift:InvoiceWiring.taxable">taxable</span></div>
+
+	<div>Tax: <span class="lift:InvoiceWiring.tax">Tax</span></div>
+
+	<div>Total: <span class="lift:InvoiceWiring.total">Total</span></div>
+      </div>
+      <!-- End Invoice Area -->
+
+      <big>
+	<big>
+	  Let's take a look at the markup for the
+	  invoice
+	</big>
+      </big>
+      <pre class="lift:ShowCode?name=/wiring.html;start=Invoice;end=End">view code</pre>
+
+      <div>
+	<big>
+	  <big>
+	    Each of the items on the screen that need to be automatically
+	    updates is declared as a snippet.  And the snippet implementation
+	    for each wired element is simple as well:
+	  </big>
+	</big>
+      </div>
+
+      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/InvoiceWiring.scala;start=WiringUI;end=**+*">view code</pre>
+
+
+      <div>
+	<big>
+	  <big>
+	    Finally, we declare the relationship among the elements
+	    (or cells in Wiring-speak):
+	  </big>
+	</big>
+      </div>
+
+      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/InvoiceWiring.scala;start=Info;end=**">view code</pre>
+
+      <br>
+      
+      <div>
+	<big>
+	  <big>
+	    Using Wiring, you can create very complex
+	    inter-relationships with the elements on the 
+	    screen. When one is updated, all the dependent
+	    elements update automatically.
+	    This is a tremendous time-saver and makes maintaining
+	    your site much easier because the maintainer doesn't
+	    have to know all the dependencies.
+	  </big>
+	</big>
+      </div>
+    </div>
+  </body>
+</html>

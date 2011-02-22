@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Wizard</title>
+  </head>
+  <body class="lift:content_id=main">
+    <div id="main" class="lift:surround?with=default;at=content">
+      <div>
+	<big>
+	  <big>
+	    Lift's Wizard allows you to define 
+	    multi-page input screens with field and
+	    form level validation that can be run 
+	    either as normal HTTP forms (with full back-
+	    button support) or as Ajax.
+	  </big>
+	</big>
+      </div>
+
+      <div style="margin: 10px; border: solid 1px blue">
+	<div class="lift:MyWizard"></div>
+      </div>
+
+      <br>
+      
+      <div>
+	Run the wizard as Ajax:
+	<button class="lift:AjaxRunner">Ajax Wizard</button>
+      </div>
+
+      <br>
+      
+      <div>
+	<big>
+	  <big>
+	    The source for the wizard:
+	  </big>
+	</big>
+      </div>
+      
+
+      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/MyWizard.scala;start=object;end=object">view code</pre>
+
+      <br>
+      
+      <div>
+	<big>
+	  <big>
+	    Wizard offers functionality similar to JBoss
+	    Seam.  However, Wizard purely declarative code
+	    rather than Java + XML.  Further, all Wizard
+	    fields are type safe.  For example, the age field
+	    is an Int, so you can multiply the age by 3
+	    without explicit casting.
+	  </big>
+	</big>
+      </div>
+      
+      <br>
+      
+      <div>
+	<big>
+	  <big>
+	    Wizard allows you to model complex user inputs...
+	    super-forms... declaratively so that the logic
+	    is obvious and the maintainence is simple.
+	  </big>
+	</big>
+      </div>
+      
+
+
+
+    </div>
+  </body>
+</html>

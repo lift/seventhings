@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Lazy</title>
+  </head>
+  <body class="lift:content_id=main">
+    <div id="main" class="lift:surround?with=default;at=content">
+      <p><big><big>Lift has built-in Lazy Loading.</big></big></p>
+      <p>
+      </p>
+      <div class="lift:LazyLoad">
+        <span class="lift:LongTime"> I started this computation at
+          <span id="start">start</span> and it
+          completed at <span id="end">end</span>.
+        </span>
+      </div>
+      <big><big>Notice the spinning icon above this paragraph?&nbsp; That
+	  icon indicates that a computation is going on.&nbsp; The page was
+	  rendered back to the browser and when the computation for that part of
+	  screen real-estate is complete, the HTML will be delivered to the
+	  browser.&nbsp; And, you can have more than one lazy loaded components
+	  on the same page: </big></big><br>
+      <div class="lift:LazyLoad">
+	<div class="lift:LongTime"> I started this computation at <span id="start">start</span> and it
+	  completed at <span id="end">end</span>. </div>
+      </div>
+      <div>
+      <big><big>How hard is the code? Here's the display part of the code:</big></big><br>
+      </div>
+      <pre class="lift:ShowCode?name=/lazy.html;start=LazyLoad;end=big">view code</pre>
+
+      <div>
+	<big>
+	  <big>
+	    That's not a lot of markup code.  Just mark the
+	    block of markup that's going to take a long time to 
+	    calculate.  Lift takes care of the rest.
+	    Let's look at the <a href="http://stable.simply.liftweb.net/#sec:Snippets">snippet</a> code:
+	  </big>
+	</big>
+      </div>
+
+      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/LongTime.java;start=**">view code</pre>
+
+
+      <div>
+	<big>
+	  <big>
+	    Most other frameworks don't have lazy loading as part of
+	    the core framework.  It's generally very hard to do, but
+	    because Lift has excellent 
+	    <span class="lift:Menu.item?name=comet">comet</span>
+	    support, it's easy to "push" content from the
+	    server to the browser.
+	  </big>
+	</big>
+      </div>
+
+      
+    </div>
+  </body>
+</html>

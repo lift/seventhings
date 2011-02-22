@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Comet</title>
+  </head>
+  <body class="lift:content_id=main">
+    <div id="main" class="lift:surround?with=default;at=content">
+      <p>
+	<big>
+	  <big>
+	    One of Lift's key features in Comet (or server push)
+	    support and associated Ajax support.
+	    This page contains a multi-user chat application
+	    with Comet (server-push) that updates the browser
+	    when anyone sends a chat message.  There's an
+	    input box that allows the user to send a line into
+	    the chat and that's done via an asynchronous call to
+	    the server (the page is not reloaded as part of the call).
+	  </big>
+	</big>
+      </p>
+
+      <div style="margin: 12px; border: 2px solid purple">
+	<ul class="lift:comet?type=Chat">
+	  <li>Line 1</li>
+	  <li class="clearable">Line 2</li>
+	  <li class="clearable">Line 3</li>
+	</ul>
+	
+	<form class="lift:Form.ajax">
+	  <input class="lift:ChatIn" id="chat_in">
+	  <input type="submit" value="Chat">
+	</form>
+      </div>
+
+      <big>
+	<big>
+	  Let's take a look at the markup for the
+	  Comet (server pushed list of chat items)
+	  part of the application:
+	</big>
+      </big>
+      <pre class="lift:ShowCode?name=/comet.html;start=ul+;end=form">view code</pre>
+
+      <div>
+	<big>
+	  <big>
+	    We simply define the markup and mark the &lt;ul> tag
+	    with a snippet invocation that loads the <tt>Chat</tt>
+	    Comet component.  Let's look at the <tt>Chat</tt>
+	    component.
+	  </big>
+	</big>
+      </div>
+
+      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/comet/Chat.scala;start=**;end=**">view code</pre>
+
+
+      <div>
+	<big>
+	  <big>
+	    Once again, something that's hard or impossible
+	    in other web frameworks is is trivial in Lift.
+	    The developer doesn't worry about the plumbing of how
+	    the browser polls for changes. By default Lift uses
+	    long polling and multiplexes multiple comet components
+	    into a single long poll, but when web sockets are 
+	    standardized, Lift will automatically support them
+	    without requiring any code changes.  The developer
+	    focuses on the semantics of "when this changes on the
+	    server, update the component" and Lift takes care of the
+	    rest.
+	  </big>
+	</big>
+      </div>
+
+      <br>
+      
+      <div>
+	<big>
+	  <big>
+	    Note that you can attempt to attack the site with
+	    a <a href="http://en.wikipedia.org/wiki/Cross-site_scripting">cross site scripting</a> attack (e.g., type <tt>&lt;script>alert('I ownz your machine')&lt/script></tt> into the chat box).  You'll see that Lift
+	    properly escapes the input without any developer intervention.
+	  </big>
+	</big>
+      </div>
+
+      <br>
+      
+      <div>
+	<big>
+	  <big>
+	    Let's take a look at the markup for the Ajax input form:
+	  </big>
+	</big>
+      </div>
+
+      <pre class="lift:ShowCode?name=/comet.html;start=form;end=div">view code</pre>
+
+      <div>
+	<big>
+	  <big>
+	    We designate the <tt>form</tt> as Ajax with the <tt>Form.ajax</tt>
+	    snippet.  The text input invokes the <tt>ChatIn</tt>
+	    snippet.  Let's look at that snippet:
+	  </big>
+	</big>
+      </div>
+
+      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/ChatIn.scala;start=**">view code</pre>
+
+      <div>
+	<big>
+	  <big>
+	    Once again, we didn't need to do any plumbing.  Lift
+	    takes care of associating the behavior (sending the input
+	    <tt>String</tt> to the <tt>ChatServer</tt>.)  We didn't
+	    set up routes or anything else.  Further, this code is 
+	    resistant to replay attacks because the automatically
+	    generated routes are dynamic and random and cannot
+	    be predicted.  And in case you're worried about doing
+	    things via standard REST calls, Lift has
+	    <a href="http://www.assembla.com/wiki/show/liftweb/REST_Web_Services">excellent REST support</a>.
+	    And Lift supports Comet for data as well as
+	    HTML, so you can use Lift to serve your 
+	    <a href="http://frothy.liftweb.net/capp">Cappuccino</a>,
+	    SproutCore, ExtJS, etc. apps and get full Comet support.
+	  </big>
+	</big>
+      </div>
+
+      
+    </div>
+  </body>
+</html>

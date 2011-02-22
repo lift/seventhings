@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Security</title>
+  </head>
+  <body class="lift:content_id=main">
+    <div id="main" class="lift:surround?with=default;at=content">
+      <div>
+	<big>
+	  <big>
+	    Lift based web apps have a lot of security baked
+	    right in.  Lift apps are resistant to many common
+	    security vulnerabilities.
+	  </big>
+	</big>
+      </div>
+
+      <div>
+	<big>
+	  <big>
+	    Here are Lift's built-in safeguards to combat
+	    many of the 
+	    <a href="http://www.owasp.org/index.php/Top_10_2010-Main">OWASP Top 10</a> vulnerabilities:
+	    <ul>
+	      <li>A1: Injection - Lift's Mapper and Record do proper
+	      escaping of query strings before they are sent to the
+	      backing store.</li>
+	      <li>A2: XSS - Lift keeps the rendered page as a DOM
+		until very late in the page rendering cycle.  This allows
+		Lift to automatically HTML escape Strings before they
+		are sent to the browser.</li>
+	      <li>A3: Session Management - Lift uses the J/EE container's
+		session management, allows for generation of new sessions
+		on login, and keeps passwords hashed at all times with
+		per-row salt.</li>
+	      <li>A4: Direct Object References - Lift forms do
+		not expose direct object references, but instead keep
+		the object references server-side and issues a session-specific
+		token that refers to the objects.</li>
+	      <li>A5: CSRF - Lift uses session-specific bindings between
+		HTML elements and the server-side behaviors associated
+		with those elements.  The bindings cannot be predicted
+		so it's not possible to issue Cross Site requests that
+		invoke session-specific bindings.</li>
+	      <li>A8: URL Access - Lift includes <a href="http://www.assembla.com/wiki/show/liftweb/SiteMap">SiteMap</a> which provides declarative
+		rules for access to URLs in the application.
+		SiteMap will deny access to URLs unless the criteria
+		is met for accessing the specific URL.</li>
+	    </ul>
+	  </big>
+	</big>
+      </div>
+
+      <div>
+	<big>
+	  <big>
+	    Because Lift apps are more secure by default,
+	    developers can focus their development efforts on
+	    features rather than writing <i>ad hoc</i> defenses
+	    to the OWASP Top 10 and other vulnerabilities.
+	  </big>
+	</big>
+      </div>
+
+    </div>
+  </body>
+</html>

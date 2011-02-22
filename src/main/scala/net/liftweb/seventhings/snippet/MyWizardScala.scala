@@ -7,15 +7,15 @@ import js.jquery.JqJsCmds._
 import util.Func0
 import wizard._
 import util.Helpers._
+import lib.WizardJ
 
 /**
  * An example of a wizard in Lift
  */
-object MyWizard extends Wizard {
-  override protected def calcAjaxOnDone = Unblock
+class MyWizardScala extends Wizard {
 
   // define the first screen
-  val nameAndAge = new Screen {
+  class NameAndAgeScreen extends Screen {
     // it has a name field
     val name = field(S ? "First Name", "",
                      valMinLen(2, S ? "Name Too Short"),
@@ -30,14 +30,14 @@ object MyWizard extends Wizard {
   }
 
   // We ask the parent's name if the person is under 18
-  val parentName = new Screen {
+  class ParentNameScreen extends Screen {
     val parentName = field(S ? "Mom or Dad's name", "",
                            valMinLen(2, S ? "Name Too Short"),
                            valMaxLen(40, S ? "Name Too Long"))
   }
 
   // we ask for the favorite pet
-  val favoritePet = new Screen {
+  class FavoritePetScreen extends Screen {
     val petName = field(S ? "Pet's name", "",
                         valMinLen(2, S ? "Name Too Short"),
                         valMaxLen(40, S ? "Name Too Long"))
@@ -49,8 +49,16 @@ object MyWizard extends Wizard {
              favoritePet.petName+
              " your age * 3: "+nameAndAge.age * 3)
   }
+
+  val nameAndAge  = new NameAndAgeScreen
+  val parentName  = new ParentNameScreen
+  val favoritePet = new FavoritePetScreen
+
+  def getNameAndAge = nameAndAge
+
+  def getParentName = parentName
+
+  def getFavoritePet = favoritePet
+
 }
 
-object AjaxRunnerScala {
-  def render = "* [onclick]" #> SHtml.ajaxInvoke(() => ModalDialog(<div><lift:MyWizard ajax="true"/></div>))
-}
