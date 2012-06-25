@@ -31,7 +31,7 @@ class Chat extends CometActor with CometListener {
  * The chat server
  */
 object ChatServer extends LiftActor with ListenerManager {
-  private var msgs = Vector("Welcome") // the private data
+  private var msgs = Vector(S ? "Welcome") // the private data
   
   // what we send to listeners on update
   def createUpdate = msgs
