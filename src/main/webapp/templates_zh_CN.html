@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Designer Friendly Templates</title>
+</head>
+<!--
+class attribute告诉Lift实际的模板从id为main的元素开始
+-->
+<body class="lift:content_id=main">
+
+<!--
+以lift:开头的class attribute调用一个snippet，
+在这个<div>的外面加上网站默认的框模板（chrome）
+并且把<div>插入到框模板的“content”标签
+-->
+<div id="main" class="lift:surround?with=default;at=content">
+    <div>
+        <big>
+            <big>
+                Lift支持设计友好的模板系统。
+                这意味着你网站的所有模板，嗯，所有页面都是符合Html5或XHTML规范的。
+                你的设计师和你的开发人员可以编辑同样的页面。
+                你的设计师们不许要去学习任何新的tag库或任何其他语言。
+                动态的内容由Lift的snippet完成，并且snippet是通过特殊的css class名来调用的。
+                这里就是本页的源代码：
+            </big>
+        </big>
+    </div>
+
+    <!--
+    调用ShowCode snippet
+    它将显示指定页面的源文件
+    并创建一个指向这个项目的GitHub repository的链接
+    -->
+    <pre class="lift:ShowCode?name=/templates_zh_CN.html">view code</pre>
+
+    <div>
+        <big>
+            <big>
+                你的团队可以获得一下好处：
+                <ul>
+                    <li>团队成员的所有代码都在同一个地方</li>
+                    <li>开发人员不再需要把设计师给他们的页面“切碎（shred）”或使用其他方法来保持页面同步</li>
+                    <li>页面总是符合规范的</li>
+                    <li>设计师不需要学习任何新东西</li>
+                </ul>
+            </big>
+        </big>
+    </div>
+
+</div>
+</body>
+</html>

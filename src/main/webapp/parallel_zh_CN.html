@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Parallel</title>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <p>
+        <big>
+            <big>
+                Lift可以让页面并行渲染。
+                当你渲染页面的时候需要从其他外部服务器获取信息的时候，这个功能非常有用。
+                当你必须连接10个不同的广告服务器，每个连接需要半秒钟响应，你就能体会到并行执行的优势了：
+            </big>
+        </big>
+    </p>
+
+    <div class="lift:FetchAd?parallel=true"
+         style="margin: 12px; border: 1px solid blue">
+        广告服务器 #1: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #2: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #3: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #4: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #5: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #6: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #7: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #8: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #9: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        广告服务器 #10: <span class="ad">The Ad</span>
+    </div>
+
+
+    <big>
+        <big>
+            标记代码部分非常简单：
+        </big>
+    </big>
+    <pre class="lift:ShowCode?name=/parallel.html;start=FetchAd;end=FetchAd">view code</pre>
+
+    <div>
+        <big>
+            <big>
+                只有一点点的标记代码。
+                当你将一个片段标记为<tt>parallel</tt>，Lift将这个片段的计算交给线程池里的其他线程。
+                同时，Lift继续计算页面的其他部分，并将最后的计算结果组合起来，再将组合后的页面发送给浏览器。
+                让我们来看看<a href="http://stable.simply.liftweb.net/#sec:Snippets">snippet</a>代码：
+            </big>
+        </big>
+    </div>
+
+    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/FetchAd.scala;start=**">view code</pre>
+
+
+    <div>
+        <big>
+            <big>
+                再次证明，对于其他框架来说很难或者根本不可能的事情，对于Lift来说小菜一碟。
+                这个武器有多厉害？
+                你的页面是否因为在生成页面的时候需要访问很多很多的后台服务而减慢页面的加载速度？
+                Lift可以让它们并行执行。
+            </big>
+        </big>
+    </div>
+
+
+</div>
+</body>
+</html>
