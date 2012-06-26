@@ -20,7 +20,7 @@
             <big>
                 这里是Lift内置的安全保障来对付大部分的<a href="http://www.owasp.org/index.php/Top_10_2010-Main">OWASP Top 10</a>漏洞：
                 <ul>
-                    <li>A1: 注入 - Lift的Mapper和Record会在将query string发送到后台数据库之前。</li>
+                    <li>A1: 注入 - Lift的Mapper和Record会在将query string发送到后台数据库之前正确转码。</li>
                     <li>A2: XSS - 在整个页面渲染周期中，Lift一直将页面视为DOM，直到最后的阶段。
                         这就让Lift可以在把页面发送浏览器之前自动转码Stings。</li>
                     <li>A3: Session管理 - Lift使用J/EE container的session管理机制，允许登录的时候创建新session，并且保证所有密码全程都是安全编码过的。</li>
