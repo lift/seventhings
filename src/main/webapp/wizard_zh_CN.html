@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Wizard</title>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <div>
+        <big>
+            <big>
+                Lift向导允许你定义多页面输入界面，包含field和form级别的校验。
+                它可以是普通的HTTP表单（并支持返回按钮）或是Ajax表单。
+            </big>
+        </big>
+    </div>
+
+    <div style="margin: 10px; border: solid 1px blue">
+        <div class="lift:MyWizard"></div>
+    </div>
+
+    <br>
+
+    <div>
+        以Ajax运行向导：
+        <button class="lift:AjaxRunner">Ajax向导</button>
+    </div>
+
+    <br>
+
+    <div>
+        <big>
+            <big>
+                向导的源文件：
+            </big>
+        </big>
+    </div>
+
+
+    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/MyWizard.scala;start=object;end=object">view code</pre>
+
+    <br>
+
+    <div>
+        <big>
+            <big>
+                Lift向导提供的功能与JBoss Seam的类似。
+                然而，Lift向导是纯代码声明的而非Java + XML。
+                甚至所有fields都是类型安全的。
+                例如，年龄field是Int类型，所以你可以将年龄乘以3而不需要额外的类型转换。
+            </big>
+        </big>
+    </div>
+
+    <br>
+
+    <div>
+        <big>
+            <big>
+                Lift向导允许你设计复杂的用户输入——超级表单——以陈述的方式，所以逻辑清晰，维护也简单。
+            </big>
+        </big>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>

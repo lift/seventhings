@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Parallel</title>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <p>
+        <big>
+            <big>
+                Lift可以讓頁面并行渲染。
+                當你渲染頁面時需要從其他外部服務器獲取信息的時候，這個功能非常有用。
+                當你必須連接10個不同的廣告服務器，每個連接需要半秒鐘響應，你就能體會到并行執行的優勢了：
+            </big>
+        </big>
+    </p>
+
+    <div class="lift:FetchAd?parallel=true"
+         style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #1: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #2: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #3: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #4: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #5: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #6: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #7: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #8: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #9: <span class="ad">The Ad</span>
+    </div>
+
+    <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+        廣告服務器 #10: <span class="ad">The Ad</span>
+    </div>
+
+
+    <big>
+        <big>
+            標記代碼部分非常簡單：
+        </big>
+    </big>
+    <pre class="lift:ShowCode?name=/parallel.html;start=FetchAd;end=FetchAd">view code</pre>
+
+    <div>
+        <big>
+            <big>
+                只有一點點的標記代碼。
+                當你將一個片段標記為<tt>parallel</tt>，Lift將這個片段的計算交給線程池裡的其他線程。
+                同時，Lift繼續計算頁面的其他部分，並將最後的計算結果重新組合起來，再將組合后的頁面發送給瀏覽器。
+                讓我們來看看<a href="http://stable.simply.liftweb.net/#sec:Snippets">snippet</a>代碼：
+            </big>
+        </big>
+    </div>
+
+    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/FetchAd.scala;start=**">view code</pre>
+
+
+    <div>
+        <big>
+            <big>
+                再次證明，對於其他框架來說很難或者根本不可能的事情，對於Lift來說小菜一碟。
+                這個武器有多厲害？
+                你的頁面是否因為在生成頁面的時候需要訪問很多很多的後台服務而減慢頁面的加載速度？
+                Lift可以讓它們并行執行。
+            </big>
+        </big>
+    </div>
+
+
+</div>
+</body>
+</html>

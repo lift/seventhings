@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Security</title>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <div>
+        <big>
+            <big>
+                基于Lift的网页应用已经包含了很多的安全性设计。
+                Lift应用可以防御多种常见的安全性漏洞。
+            </big>
+        </big>
+    </div>
+
+    <div>
+        <big>
+            <big>
+                这里是Lift内置的安全保障来对付大部分的<a href="http://www.owasp.org/index.php/Top_10_2010-Main">OWASP Top 10</a>漏洞：
+                <ul>
+                    <li>A1: 注入 - Lift的Mapper和Record会在将query string发送到后台数据库之前正确转码。</li>
+                    <li>A2: XSS - 在整个页面渲染周期中，Lift一直将页面视为DOM，直到最后的阶段。
+                        这就让Lift可以在把页面发送浏览器之前自动转码Stings。</li>
+                    <li>A3: Session管理 - Lift使用J/EE container的session管理机制，允许登录的时候创建新session，并且保证所有密码全程都是安全编码过的。</li>
+                    <li>A4: 直接对象引用 - Lift表单不会暴露直接对象引用，对象只是保存在服务器端，并发布一个关于特定session的token来引用对象。</li>
+                    <li>A5: CSRF - Lift利用特定session的绑定来绑定HTML元素与这个元素的服务器端的行为。
+                        绑定是不可预测的，所以不可能用Cross Site请求来调用特定session的绑定。</li>
+                    <li>A8: URL Access - Lift包含<a href="http://www.assembla.com/wiki/show/liftweb/SiteMap">SiteMap</a>机制，它为应用的URL可访问性提供定义规则。
+                        SiteMap会拒绝访问URL除非满足特殊URL的访问标准。</li>
+                </ul>
+            </big>
+        </big>
+    </div>
+
+    <div>
+        <big>
+            <big>
+                因为Lift应用在默认情况下就有更强的安全性，开发者只用将精力放在功能上而不是写一些<i>ad hoc</i>的防御代码来对付OWASP Top 10还有其他的漏洞。
+            </big>
+        </big>
+    </div>
+
+</div>
+</body>
+</html>
