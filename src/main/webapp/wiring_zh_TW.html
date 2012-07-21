@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Wiring</title>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <div>
+        <big>
+            <big>
+                網頁變得越來越複雜，頁面上的很多東西之間有大量的相互依賴關係。
+                例如，你有一個邀請名單和一個邀請數量。
+                當你接受或拒絕一個邀請（假設這是通過Ajax完成），你希望邀請數量自動更新。
+                Lift的Wiring允許你聲明頁面上各種元素之間的關係，當任何前置元素髮生改變，依賴元素會在下一個HTTP響應（Ajax或Comet）刷新显示。
+            </big>
+        </big>
+    </div>
+
+    <br>
+
+    <div>
+        <big>
+            <big>
+                說了這麼多。
+                讓我們看看如何建立一個清單的界面：
+            </big>
+        </big>
+    </div>
+
+    <!-- The Invoice Area -->
+    <div>
+        <div id="invoice_lines" class="lift:InvoiceWiring.showLines">input goes here</div>
+        <div>
+            <button class="lift:InvoiceWiring.addLine?div=invoice_lines">添加</button>
+        </div>
+
+        <div>總額: <span class="lift:InvoiceWiring.subtotal">subtotal</span></div>
+
+        <div>稅率: <input class="lift:InvoiceWiring.taxRate"></div>
+
+        <div>稅前: <span class="lift:InvoiceWiring.taxable">taxable</span></div>
+
+        <div>稅額: <span class="lift:InvoiceWiring.tax">Tax</span></div>
+
+        <div>稅後: <span class="lift:InvoiceWiring.total">Total</span></div>
+    </div>
+    <!-- End Invoice Area -->
+
+    <big>
+        <big>
+            讓我們看看清單的標記代碼：
+        </big>
+    </big>
+    <pre class="lift:ShowCode?name=/wiring.html;start=Invoice;end=End">view code</pre>
+
+    <div>
+        <big>
+            <big>
+                界面中需要自動更新的每一項都聲明為一個snippet。
+                並且每一個wired元素snippet的實現也很簡單：
+            </big>
+        </big>
+    </div>
+
+    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/InvoiceWiring.scala;start=WiringUI;end=**+*">view code</pre>
+
+
+    <div>
+        <big>
+            <big>
+                最後，我們聲明這些元素（或者按Wiring的說法稱為cell）之間的關係：
+            </big>
+        </big>
+    </div>
+
+    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/InvoiceWiring.scala;start=Info;end=**">view code</pre>
+
+    <br>
+
+    <div>
+        <big>
+            <big>
+                使用Wiring，你可以創建元素之間有非常複雜的關係的界面。
+                當其中一個更新了，所有依賴的元素都會自動更新。
+                這會節約大量的時間並且你的網站更容易維護，因為維護者不需要知道所有的依賴元素。
+            </big>
+        </big>
+    </div>
+</div>
+</body>
+</html>

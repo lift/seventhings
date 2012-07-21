@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Lazy</title>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <p><big><big>Lift內建支持延遲加載。</big></big></p>
+    <p>
+    </p>
+    <div class="lift:LazyLoad">
+        <span class="lift:LongTime"> 計算開始於
+          <span id="start">start</span> ，結束於 <span id="end"></span>。
+        </span>
+    </div>
+    <big><big>注意到文字上面的圖標了嗎？ 那個旋轉圖標表示正在計算中。
+        瀏覽器首先渲染了頁面，當頁面中需要計算的部分計算完成時，相關HTML代碼會發送給瀏覽器。
+        並且一個頁面可以包含多個延遲加載控件： </big></big><br>
+    <div class="lift:LazyLoad">
+        <div class="lift:LongTime"> 計算開始於 <span id="start">start</span> ，結束於 <span id="end"></span>。 </div>
+    </div>
+    <div>
+        <big><big>會不會很難實現呢？下面就是显示部分的代碼：</big></big><br>
+    </div>
+    <pre class="lift:ShowCode?name=/lazy.html;start=LazyLoad;end=big">view code</pre>
+
+    <div>
+        <big>
+            <big>
+                只有一點點的標記代碼。
+                它只是標記了這個塊將需要長時間計算。
+                Lift幫你完成剩下的工作。
+                讓我們來看看<a href="http://stable.simply.liftweb.net/#sec:Snippets">snippet</a>代碼：
+            </big>
+        </big>
+    </div>
+
+    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/LongTime.scala;start=**">view code</pre>
+
+
+    <div>
+        <big>
+            <big>
+                大部分框架的核心不提供延遲加載功能。
+                這個功能一般很難實現，但是Lift有非常棒的<span class="lift:Menu.item?name=comet">comet</span>支持，所以可以很容易的從服務器“推送（push）”內容到瀏覽器。
+            </big>
+        </big>
+    </div>
+
+
+</div>
+</body>
+</html>

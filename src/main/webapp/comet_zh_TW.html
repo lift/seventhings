@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Comet</title>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <p>
+        <big>
+            <big>
+                Lift的一個關鍵功能就是對Comet（服務器推送）和相關連的Ajax的支持。
+                本頁包含了一個多人聊天室應用，當任何人發送聊天消息時，會以Comet（服務器推送）更新瀏覽器。
+                用戶可以通過頁面的輸入框發送一行信息到聊天室，信息會以異步請求的方式發送到服務器（頁面在請求的時候不會重新加載）。
+            </big>
+        </big>
+    </p>
+
+    <div style="margin: 12px; border: 2px solid purple">
+        <ul class="lift:comet?type=Chat">
+            <li>Line 1</li>
+            <li class="clearable">Line 2</li>
+            <li class="clearable">Line 3</li>
+        </ul>
+
+        <form class="lift:Form.ajax">
+            <input class="lift:ChatIn" id="chat_in">
+            <input type="submit" value="Chat">
+        </form>
+    </div>
+
+    <big>
+        <big>
+            讓我們看看應用的Comet（服務器推送聊天內容列表）部分的標記代碼：
+        </big>
+    </big>
+    <pre class="lift:ShowCode?name=/comet.html;start=ul+;end=form">view code</pre>
+
+    <div>
+        <big>
+            <big>
+                我們只是簡單的標記&lt;ul>標籤為一個snippet調用，用來載入名為<tt>Chat</tt>的Comet組件。
+                讓我們看看<tt>Chat</tt>組件。
+            </big>
+        </big>
+    </div>
+
+    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/comet/Chat.scala;start=**;end=**">view code</pre>
+
+
+    <div>
+        <big>
+            <big>
+                再次證明，對於其他框架來說很難或者根本不可能的事情，對於Lift來說小菜一碟。
+                開發人員不用管瀏覽器是如何輪詢（poll）最新的變化。
+                Lift默認使用long polling和合併多個comet組件到一個單獨的long poll，當web socket標準化以後，Lift將會自動支持web socket而不影響你寫的代碼。
+                開發人員只用管“什麼時候服務器端發生變化了，就更新組件”，Lift來完成剩下的工作。
+            </big>
+        </big>
+    </div>
+
+    <br>
+
+    <div>
+        <big>
+            <big>
+                請注意，你可以試試用<a href="http://en.wikipedia.org/wiki/Cross-site_scripting">cross site scripting</a>攻擊來攻擊本網站（例如，在聊天輸入框輸入<tt>&lt;script>alert('我黑了你的機器')&lt/script></tt>）。
+                你會發現在開發者沒有做任何事情的情況下，Lift正確的轉碼了你輸入的東西。
+            </big>
+        </big>
+    </div>
+
+    <br>
+
+    <div>
+        <big>
+            <big>
+                讓我們來看看關於Ajax輸入表單的標記代碼：
+            </big>
+        </big>
+    </div>
+
+    <pre class="lift:ShowCode?name=/comet.html;start=form;end=div">view code</pre>
+
+    <div>
+        <big>
+            <big>
+                我們用<tt>Form.ajax</tt> snippet來指示這個<tt>form</tt>是一個Ajax表單。
+                文本輸入觸發<tt>ChatIn</tt> snippet。
+                來看看這個snippet：
+            </big>
+        </big>
+    </div>
+
+    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/ChatIn.scala;start=**">view code</pre>
+
+    <div>
+        <big>
+            <big>
+                再次表明，我們不許要任何深入研究。
+                Lift負責行為（發送輸入的<tt>String</tt>到<tt>ChatServer</tt>。）的關聯。
+                我們沒有設置routes或任何其他東西。
+                甚至這段代碼可以抵抗replay攻擊，因為這個自動生成的routes是動態、隨機和不可預測的。
+                當你想用標準的REST訪問來完成任務的時候，Lift提供<a href="http://www.assembla.com/wiki/show/liftweb/REST_Web_Services">非常棒的REST支持</a>。
+                並且Lift支持數據或者HTML的Comet，所以你可也用Lift作為<a href="http://frothy.liftweb.net/capp">Cappuccino</a>、SproutCore、ExtJS等應用的服務端，並獲得全面的Comet支持。
+            </big>
+        </big>
+    </div>
+
+
+</div>
+</body>
+</html>
