@@ -4,12 +4,12 @@ organization := "Lift"
 
 name := "seventhings"
 
-version := "0.1"
+version := "0.2"
 
 scalaVersion := "2.9.1"
 
 libraryDependencies ++= {
-  val liftVersion = "2.4"
+  val liftVersion = "2.5.1"
   Seq(
     "net.liftweb" %% "lift-webkit" % liftVersion,
     "net.liftweb" %% "lift-wizard" % liftVersion,
