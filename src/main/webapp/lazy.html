@@ -4,13 +4,13 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>Lazy</title>
   </head>
-  <body class="lift:content_id=main">
-    <div id="main" class="lift:surround?with=default;at=content">
+  <body data-lift-content-id="main">
+    <div id="main" data-lift="surround?with=default;at=content">
       <p><big><big>Lift has built-in Lazy Loading.</big></big></p>
       <p>
       </p>
-      <div class="lift:LazyLoad">
-        <span class="lift:LongTime"> I started this computation at
+      <div data-lift="LazyLoad">
+        <span data-lift="LongTime"> I started this computation at
           <span id="start">start</span> and it
           completed at <span id="end">end</span>.
         </span>
@@ -21,15 +21,14 @@
 	  screen real-estate is complete, the HTML will be delivered to the
 	  browser.&nbsp; And, you can have more than one lazy loaded components
 	  on the same page: </big></big><br>
-      <div class="lift:LazyLoad">
-	<div class="lift:LongTime"> I started this computation at <span id="start">start</span> and it
+      <div data-lift="LazyLoad">
+	<div data-lift="LongTime"> I started this computation at <span id="start">start</span> and it
 	  completed at <span id="end">end</span>. </div>
       </div>
       <div>
       <big><big>How hard is the code? Here's the display part of the code:</big></big><br>
       </div>
-      <pre class="lift:ShowCode?name=/lazy.html;start=LazyLoad;end=big">view code</pre>
-
+      <pre data-lift="ShowCode?name=/lazy.html;start=LazyLoad;end=big">view code</pre>
       <div>
 	<big>
 	  <big>
@@ -40,24 +39,19 @@
 	  </big>
 	</big>
       </div>
-
-      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/LongTime.scala;start=**">view code</pre>
-
-
+      <pre data-lift="ShowCode?name=/net/liftweb/seventhings/snippet/LongTime.scala;start=**">view code</pre>
       <div>
 	<big>
 	  <big>
 	    Most other frameworks don't have lazy loading as part of
 	    the core framework.  It's generally very hard to do, but
 	    because Lift has excellent 
-	    <span class="lift:Menu.item?name=comet">comet</span>
+	    <span data-lift="Menu.item?name=comet">comet</span>
 	    support, it's easy to "push" content from the
 	    server to the browser.
 	  </big>
 	</big>
       </div>
-
-      
     </div>
   </body>
 </html>

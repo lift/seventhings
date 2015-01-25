@@ -21,7 +21,7 @@ object MyWizard extends Wizard {
                      valMaxLen(40, S ? "Name Too Long"))
 
     // and an age field
-    val age = field(S ? "Age", 0, minVal(5, S ?? "Too young"),
+    val age = field(S ? "Age", 0, minVal(5, S ? "Too young"),
       maxVal(120, S ? "You should be dead"))
 
     // choose the next screen based on the age
