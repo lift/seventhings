@@ -4,19 +4,18 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>Designer Friendly Templates</title>
   </head>
-  <!-- The class attribute tells Lift that the 
+  <!-- The data-lift-content-id attribute tells Lift that the 
        actual template starts with the element
        with the id main -->
-  <body class="lift:content_id=main">
-
+	<body data-lift-content-id="main">
+  
     <!--
-       A class attribute with the prefix lift: 
-       invokes a snippet that surrounds this
+       A data-lift attribute invokes a snippet that surrounds this
        <div> with the default chrome for the site
        and inserts the <div> at the "content"
        marker in the template
        -->
-    <div id="main" class="lift:surround?with=default;at=content">
+    <div id="main" data-lift="surround?with=default;at=content">
       <div>
 	<big>
 	  <big>
@@ -38,7 +37,7 @@
 	   shows the source for the designated page
 	   and generates a link to the GitHub repository
 	   for this project -->
-      <pre class="lift:ShowCode?name=/templates.html">view code</pre>
+      <pre data-lift="ShowCode?name=/templates.html">view code</pre>
 
       <div>
 	<big>

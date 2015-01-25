@@ -4,8 +4,8 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>Wiring</title>
 </head>
-<body class="lift:content_id=main">
-<div id="main" class="lift:surround?with=default;at=content">
+  <body data-lift-content-id="main">
+    <div id="main" data-lift="surround?with=default;at=content">
     <div>
         <big>
             <big>
@@ -30,20 +30,20 @@
 
     <!-- The Invoice Area -->
     <div>
-        <div id="invoice_lines" class="lift:InvoiceWiring.showLines">input goes here</div>
+        <div id="invoice_lines" data-lift="InvoiceWiring.showLines">input goes here</div>
         <div>
-            <button class="lift:InvoiceWiring.addLine?div=invoice_lines">添加</button>
+            <button data-lift="InvoiceWiring.addLine?div=invoice_lines">添加</button>
         </div>
 
-        <div>總額: <span class="lift:InvoiceWiring.subtotal">subtotal</span></div>
+        <div>總額: <span data-lift="InvoiceWiring.subtotal">subtotal</span></div>
 
-        <div>稅率: <input class="lift:InvoiceWiring.taxRate"></div>
+        <div>稅率: <input data-lift="InvoiceWiring.taxRate"></div>
 
-        <div>稅前: <span class="lift:InvoiceWiring.taxable">taxable</span></div>
+        <div>稅前: <span data-lift="InvoiceWiring.taxable">taxable</span></div>
 
-        <div>稅額: <span class="lift:InvoiceWiring.tax">Tax</span></div>
+        <div>稅額: <span data-lift="InvoiceWiring.tax">Tax</span></div>
 
-        <div>稅後: <span class="lift:InvoiceWiring.total">Total</span></div>
+        <div>稅後: <span data-lift="InvoiceWiring.total">Total</span></div>
     </div>
     <!-- End Invoice Area -->
 
@@ -52,7 +52,7 @@
             讓我們看看清單的標記代碼：
         </big>
     </big>
-    <pre class="lift:ShowCode?name=/wiring.html;start=Invoice;end=End">view code</pre>
+    <pre data-lift="ShowCode?name=/wiring.html;start=Invoice;end=End">view code</pre>
 
     <div>
         <big>
@@ -63,7 +63,7 @@
         </big>
     </div>
 
-    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/InvoiceWiring.scala;start=WiringUI;end=**+*">view code</pre>
+    <pre data-lift="ShowCode?name=/net/liftweb/seventhings/snippet/InvoiceWiring.scala;start=WiringUI;end=**+*">view code</pre>
 
 
     <div>
@@ -74,7 +74,7 @@
         </big>
     </div>
 
-    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/InvoiceWiring.scala;start=Info;end=**">view code</pre>
+    <pre data-lift="ShowCode?name=/net/liftweb/seventhings/snippet/InvoiceWiring.scala;start=Info;end=**">view code</pre>
 
     <br>
 

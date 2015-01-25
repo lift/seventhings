@@ -5,16 +5,16 @@
     <title>Designer Friendly Templates</title>
 </head>
 <!--
-class attribute告诉Lift实际的模板从id为main的元素开始
+data-lift-content-id告诉Lift实际的模板从id为main的元素开始
 -->
-<body class="lift:content_id=main">
+  <body data-lift-content-id="main">
 
 <!--
-以lift:开头的class attribute调用一个snippet，
+data-lift attribute调用一个snippet，
 在这个<div>的外面加上网站默认的框模板（chrome）
 并且把<div>插入到框模板的“content”标签
 -->
-<div id="main" class="lift:surround?with=default;at=content">
+  <div id="main" data-lift="surround?with=default;at=content">
     <div>
         <big>
             <big>
@@ -33,7 +33,7 @@ class attribute告诉Lift实际的模板从id为main的元素开始
     它将显示指定页面的源文件
     并创建一个指向这个项目的GitHub repository的链接
     -->
-    <pre class="lift:ShowCode?name=/templates_zh_CN.html">view code</pre>
+    <pre data-lift="ShowCode?name=/templates_zh_CN.html">view code</pre>
 
     <div>
         <big>

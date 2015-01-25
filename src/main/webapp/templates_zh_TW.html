@@ -5,16 +5,16 @@
     <title>Designer Friendly Templates</title>
 </head>
 <!--
-class attribute告訴Lift實際的模板從id為main的元素開始
+data-lift-content-id告訴Lift實際的模板從id為main的元素開始
 -->
-<body class="lift:content_id=main">
+<body data-lift-content-id="main">
 
 <!--
-以lift:開頭的class attribute調用一個snippet，
+data-lift attribute調用一個snippet，
 在這個<div>的外面加上網站默認的框模板（chrome）
 並且把<div>插入到框模板的“content”標籤
 -->
-<div id="main" class="lift:surround?with=default;at=content">
+<div id="main" data-lift="surround?with=default;at=content">
     <div>
         <big>
             <big>

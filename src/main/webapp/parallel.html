@@ -4,8 +4,8 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>Parallel</title>
   </head>
-  <body class="lift:content_id=main">
-    <div id="main" class="lift:surround?with=default;at=content">
+  <body data-lift-content-id="main">
+    <div id="main" data-lift="surround?with=default;at=content">
       <p>
 	<big>
 	  <big>
@@ -17,56 +17,51 @@
 	  </big>
 	</big>
       </p>
-
-      <div class="lift:FetchAd?parallel=true" 
+      <div data-lift="FetchAd?parallel=true" 
 	   style="margin: 12px; border: 1px solid blue">
         Ad server #1: <span class="ad">The Ad</span>
       </div>
-
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #2: <span class="ad">The Ad</span>
       </div>
 
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #3: <span class="ad">The Ad</span>
       </div>
 
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #4: <span class="ad">The Ad</span>
       </div>
 
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #5: <span class="ad">The Ad</span>
       </div>
 
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #6: <span class="ad">The Ad</span>
       </div>
 
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #7: <span class="ad">The Ad</span>
       </div>
 
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #8: <span class="ad">The Ad</span>
       </div>
 
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #9: <span class="ad">The Ad</span>
       </div>
 
-      <div class="lift:FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
+      <div data-lift="FetchAd?parallel=true" style="margin: 12px; border: 1px solid blue">
 	Ad server #10: <span class="ad">The Ad</span>
       </div>
-
-
       <big>
 	<big>
 	  The markup is very simple:
 	</big>
       </big>
-      <pre class="lift:ShowCode?name=/parallel.html;start=FetchAd;end=FetchAd">view code</pre>
-
+      <pre data-lift="ShowCode?name=/parallel.html;start=FetchAd;end=FetchAd">view code</pre>
       <div>
 	<big>
 	  <big>
@@ -80,10 +75,7 @@
 	  </big>
 	</big>
       </div>
-
-      <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/FetchAd.scala;start=**">view code</pre>
-
-
+      <pre data-lift="ShowCode?name=/net/liftweb/seventhings/snippet/FetchAd.scala;start=**">view code</pre>
       <div>
 	<big>
 	  <big>
@@ -96,8 +88,6 @@
 	  </big>
 	</big>
       </div>
-
-      
     </div>
   </body>
 </html>

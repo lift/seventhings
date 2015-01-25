@@ -4,26 +4,26 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>Lazy</title>
 </head>
-<body class="lift:content_id=main">
-<div id="main" class="lift:surround?with=default;at=content">
+  <body data-lift-content-id="main">
+    <div id="main" data-lift="surround?with=default;at=content">
     <p><big><big>Lift内建支持延迟加载。</big></big></p>
     <p>
     </p>
-    <div class="lift:LazyLoad">
-        <span class="lift:LongTime"> 计算开始于
+    <div data-lift="LazyLoad">
+        <span data-lift="LongTime"> 计算开始于
           <span id="start">start</span> ，结束于 <span id="end"></span>。
         </span>
     </div>
     <big><big>注意到文字上面的图标了吗？ 那个旋转图标表示正在计算中。
         浏览器首先渲染了页面，当页面中需要计算的部分计算完成时，相关HTML代码会发送给浏览器。
         并且一个页面可以包含多个延迟加载控件： </big></big><br>
-    <div class="lift:LazyLoad">
-        <div class="lift:LongTime"> 计算开始于 <span id="start">start</span> ，结束于 <span id="end"></span>。 </div>
+    <div data-lift="LazyLoad">
+        <div data-lift="LongTime"> 计算开始于 <span id="start">start</span> ，结束于 <span id="end"></span>。 </div>
     </div>
     <div>
         <big><big>会不会很难实现呢？下面就是显示部分的代码：</big></big><br>
     </div>
-    <pre class="lift:ShowCode?name=/lazy.html;start=LazyLoad;end=big">view code</pre>
+    <pre data-lift="ShowCode?name=/lazy.html;start=LazyLoad;end=big">view code</pre>
 
     <div>
         <big>
@@ -36,14 +36,14 @@
         </big>
     </div>
 
-    <pre class="lift:ShowCode?name=/net/liftweb/seventhings/snippet/LongTime.scala;start=**">view code</pre>
+    <pre data-lift="ShowCode?name=/net/liftweb/seventhings/snippet/LongTime.scala;start=**">view code</pre>
 
 
     <div>
         <big>
             <big>
                 大部分框架的核心不提供延迟加载功能。
-                这个功能一般很难实现，但是Lift有非常棒的<span class="lift:Menu.item?name=comet">comet</span>支持，所以可以很容易的从服务器“推送（push）”内容到浏览器。
+                这个功能一般很难实现，但是Lift有非常棒的<span data-lift="Menu.item?name=comet">comet</span>支持，所以可以很容易的从服务器“推送（push）”内容到浏览器。
             </big>
         </big>
     </div>
