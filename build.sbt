@@ -13,7 +13,7 @@ scalacOptions ++= Seq("-deprecation", "-unchecked")
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
 libraryDependencies ++= {
-  val liftVersion = "2.6"
+  val liftVersion = "2.6.2"
   Seq(
     "net.liftweb" %% "lift-webkit" % liftVersion,
     "net.liftweb" %% "lift-wizard" % liftVersion,
