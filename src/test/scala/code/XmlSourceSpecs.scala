@@ -9,7 +9,7 @@ import org.specs2.mutable._
 import net.liftweb.common.Full
 import net.liftweb.util.PCDataXmlParser
 
-class XmlSourceSpecs extends SpecificationWithJUnit {
+class XmlSourceSpecs extends Specification {
 
   "XML Sources" should {
     "be well-formed" in {
