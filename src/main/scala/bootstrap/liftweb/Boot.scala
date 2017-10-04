@@ -1,13 +1,10 @@
 package bootstrap.liftweb
 
 import net.liftweb._
-import util._
-import Helpers._
-
 import common._
 import http._
 import sitemap._
-import Loc._
+import net.liftmodules.JQueryModule
 
 
 /**
@@ -50,5 +47,19 @@ class Boot {
       new Html5Properties(r.userAgent))
 
     LiftRules.resourceNames ::= "i18n/trans"
+
+    LiftRules.securityRules = () => {
+      SecurityRules(
+        content = Some(
+          ContentSecurityPolicy(
+            scriptSources = List(ContentSourceRestriction.UnsafeEval,
+              ContentSourceRestriction.Self),
+            styleSources = List(ContentSourceRestriction.UnsafeInline,
+              ContentSourceRestriction.Self)
+          )))
+    }
+
+    JQueryModule.InitParam.JQuery=JQueryModule.JQuery224
+    JQueryModule.init()
   }
 }

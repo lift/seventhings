@@ -10,6 +10,7 @@ syntax: glob
 
 # logs
 derby.log
+console.devmode.log
 
 # eclipse conf file
 .settings

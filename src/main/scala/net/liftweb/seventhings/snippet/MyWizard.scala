@@ -4,7 +4,7 @@ package snippet
 import net.liftweb._
 import http._
 import js.jquery.JqJsCmds._
-import wizard._
+import net.liftweb.http._
 import util.Helpers._
 
 /**
@@ -46,10 +46,10 @@ object MyWizard extends Wizard {
   def finish() {
     S.notice(S ? "Thank you for registering your pet" + ": "+
              favoritePet.petName+
-             " " + S ? "your age" + "* 3: "+nameAndAge.age * 3)
+             " " + S ? "Your age" + " * 3: "+nameAndAge.age * 3)
   }
 }
 
 object AjaxRunner {
-  def render = "* [onclick]" #> SHtml.ajaxInvoke(() => ModalDialog(<div><lift:MyWizard ajax="true"/></div>))
+  def render = "* [onclick]" #> SHtml.ajaxInvoke(() => ModalDialog(<div data-lift="MyWizard?ajax=true"></div>))
 }
