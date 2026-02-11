@@ -11,7 +11,7 @@ import Helpers._
 object FetchAd {
   def render = {
     // sleep for 1/2 second
-    Thread.sleep(500 millis)
+    Thread.sleep(500L)
 
     // send the result back
     ".ad" #> Thread.currentThread.getName
