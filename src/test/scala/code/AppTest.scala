@@ -13,7 +13,7 @@ object AppTest {
     suite
   }
 
-  def main(args : Array[String]) {
+  def main(args : Array[String]): Unit = {
     _root_.junit.textui.TestRunner.run(suite)
   }
 }
@@ -44,7 +44,7 @@ class AppTest extends TestCase("app") {
     def handledXHtml(file: String) =
       file.endsWith(".html") || file.endsWith(".htm") || file.endsWith(".xhtml")
 
-    def wellFormed(file: File) {
+    def wellFormed(file: File): Unit = {
       if (file.isDirectory)
         for (f <- file.listFiles) wellFormed(f)
 

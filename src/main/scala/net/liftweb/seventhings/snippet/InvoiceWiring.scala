@@ -94,7 +94,7 @@ class InvoiceWiring {
   /**
    * Mutate a line and update the Info field
    */
-  private def mutateLine(guid: String)(f: Line => Line) {
+  private def mutateLine(guid: String)(f: Line => Line): Unit = {
     val all = Info.invoices.get
     val head = all.filter(_.guid == guid).map(f)
     val rest = all.filter(_.guid != guid)

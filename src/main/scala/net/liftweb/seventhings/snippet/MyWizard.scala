@@ -43,7 +43,7 @@ object MyWizard extends Wizard {
   }
 
   // what to do on completion of the wizard
-  def finish() {
+  def finish(): Unit = {
     S.notice(S ? "Thank you for registering your pet" + ": "+
              favoritePet.petName+
              " " + S ? "Your age" + " * 3: "+nameAndAge.age * 3)

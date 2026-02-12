@@ -4,7 +4,6 @@ import net.liftweb._
 import common._
 import http._
 import sitemap._
-import net.liftmodules.JQueryModule
 
 
 /**
@@ -12,7 +11,7 @@ import net.liftmodules.JQueryModule
  * to modify lift's environment
  */
 class Boot {
-  def boot {
+  def boot: Unit = {
     // where to search snippet
     LiftRules.addToPackages("net.liftweb.seventhings")
 
@@ -58,8 +57,5 @@ class Boot {
               ContentSourceRestriction.Self)
           )))
     }
-
-    JQueryModule.InitParam.JQuery=JQueryModule.JQuery224
-    JQueryModule.init()
   }
 }
