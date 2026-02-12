@@ -14,7 +14,7 @@ object LongTime {
     val start = now
 
     // sleep for up to 15 seconds
-    Thread.sleep(randomLong(15 seconds))
+    Thread.sleep(randomLong(15.seconds))
 
     // send the result back
     "#start" #> start.toString &

@@ -27,7 +27,7 @@ class XmlSourceSpecs extends SpecificationWithJUnit {
       def handledXHtml(file: String) =
 	file.endsWith(".html") || file.endsWith(".htm") || file.endsWith(".xhtml")
       
-      def wellFormed(file: File) {
+      def wellFormed(file: File): Unit = {
 	if (file.isDirectory)
 	  for (f <- file.listFiles) wellFormed(f)
         

@@ -20,30 +20,30 @@ The application showcases the following seven Lift features:
 
 ## Technology Stack
 
-- **Language**: Scala
-- **Framework**: Lift Web Framework 3.1.1
-- **Build System**: SBT (Scala Build Tool)
-- **Server**: Jetty (embedded for testing and demo)
-- **Testing**: Specs2 with JUnit
+- **Language**: Scala 2.13.18
+- **Framework**: Lift Web Framework 4.0.0-M4
+- **Build System**: SBT (Scala Build Tool) with sbt-war plugin
+- **Server**: Jetty 11.0.25 (embedded for testing and demo)
+- **Testing**: Specs2 4.21.0 with JUnit
 - **Database**: H2 (for demonstration purposes)
 - **Logging**: Logback
-- **JavaScript**: jQuery 2.2.4
+- **JavaScript**: jQuery 3.7.1
 
 ## Building and Running
 
 ### Prerequisites
 
-- Java 8 or later
+- Java 11 or later (required for Jetty 11)
 - SBT (Scala Build Tool)
 
 ### Quick Start
 
 ```bash
 # Run the application with SBT
-./sbt
+sbt
 
 # In the SBT prompt, run:
-> jetty:start
+> warStart
 
 # The application will be available at http://localhost:8080
 ```
@@ -51,13 +51,13 @@ The application showcases the following seven Lift features:
 Alternatively, you can use the included `sbt` script directly:
 
 ```bash
-./sbt jetty:start
+sbt warStart
 ```
 
 ### Running Tests
 
 ```bash
-./sbt test
+sbt test
 ```
 
 ## Internationalization
@@ -98,7 +98,11 @@ src/main/
 
 ## Recent Updates
 
-- Upgraded to Lift 3.1.1 with modern web standards
+- Upgraded to Scala 2.13.18 and Lift 4.0.0-M4 for modern language features and Jakarta Servlet 6.1 support
+- Migrated from xsbt-web-plugin to sbt-war 5.1.1 build plugin
+- Updated to Jetty 11.0.25 with Jakarta Servlet API
+- Replaced lift-jquery-module with jQuery 3.7.1 WebJar (now bundled in lift-webkit)
+- Fixed deprecated Scala 2.13 procedure syntax throughout codebase
 - Implemented Content Security Policy (CSP) for enhanced security
 - Added Logback logging to prevent disk space issues
 - Migrated from class-based selectors to `data-lift` attribute-based selectors
