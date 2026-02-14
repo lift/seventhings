@@ -54,7 +54,10 @@ class Boot {
             scriptSources = List(ContentSourceRestriction.UnsafeEval,
               ContentSourceRestriction.Self),
             styleSources = List(ContentSourceRestriction.UnsafeInline,
-              ContentSourceRestriction.Self)
+              ContentSourceRestriction.Self,
+              ContentSourceRestriction.Host("https://fonts.googleapis.com")),
+            fontSources = List(ContentSourceRestriction.Self,
+              ContentSourceRestriction.Host("https://fonts.gstatic.com"))
           )))
     }
   }

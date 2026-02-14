@@ -1,129 +1,80 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <title class="lift:Menu.title">Seven Things: </title>
-    <style class="lift:CSS.blueprint"></style>
-    <style class="lift:CSS.fancyType"></style>
-    
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link href="/css/shCore.css" rel="stylesheet" type="text/css">
+    <link href="/css/shThemeModern.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- Scripts -->
+    <script id="jquery" src="/classpath/jquery.js" type="text/javascript"></script>
+    <script id="json" src="/classpath/json.js" type="text/javascript"></script>
+    <script id="jqueryblockui" src="/scripts/jquery.blockUI.js" type="text/javascript"></script>
     <script id="shcore" src="/scripts/shCore.js" type="text/javascript"></script>
     <script id="shbrushscala" src="/scripts/shBrushScala.js" type="text/javascript"></script>
     <script id="shbrushxml" src="/scripts/shBrushXml.js" type="text/javascript"></script>
     <script id="shbrushbash" src="/scripts/shBrushBash.js" type="text/javascript"></script>
-    <script id="jquery" src="/classpath/jquery.js" type="text/javascript"></script>
-    <script id="jqueryblockui" src="/scripts/jquery.blockUI.js" type="text/javascript"></script>
-    <script id="json" src="/classpath/json.js" type="text/javascript"></script>
-
-    <link href="/css/shCore.css" rel="stylesheet" type="text/css" >
-    <link href="/css/shThemeDefault.css" rel="stylesheet" type="text/css" > 
-
-    <style type="text/css">
-/* <![CDATA[ */
-.edit_error_class {
-  display: block;
-  color: red;
-}
-
-.sidebar ul {
-	margin:0;
-	padding:0;
-	border-bottom:1px solid #ccc;
-}
-	 
-
-.sidebar ul li {
-	margin:0;
-	padding:0;
-	list-style:none;
-	border:1px solid #ccc;
-	border-bottom:none;
-}
-
-.sidebar ul li a {
-	display:block;
-	padding:3px;
-	text-indent:30px;
-	text-decoration:none;
-}
-
-.sidebar ul li span {
-	display:block;
-	padding:3px;
-	text-indent:30px;
-	text-decoration:none;
-}
-
-.sidebar ul li a:hover {
-	background-color: #eee;
-}
-
-div.globalErrors > ul,
-div.fields ul.errors {
-  list-style-type: none;
-}
-  /* ]]> */
-  </style>
+    <script src="/scripts/theme.js" type="text/javascript"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="column span-12 last" style="text-align: right">
-        <h1 class="alt">Seven Things<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"></h1>
-      </div>
+    <input type="checkbox" id="nav-toggle" />
 
-      <hr>
+    <div class="layout">
+      <header class="header">
+        <h1 class="alt">
+          Seven Things
+          <img alt="" id="ajax-loader" style="display:none" src="/images/ajax-loader.gif">
+        </h1>
+        <label for="nav-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </header>
 
-      <div class="column span-6 colborder sidebar">
-        <hr class="space" >
-
-	<span class="lift:Menu.builder"></span>
+      <aside class="sidebar">
+        <nav>
+          <span class="lift:Menu.builder"></span>
+        </nav>
 
         <div class="lift:Msgs"></div>
-        <hr class="space" />
 
-	<br/>
-	<br/>
+        <div class="sidebar-card">
+          <ul>
+            <li>
+              <a href="https://github.com/lift/framework">Lift on GitHub</a>
+            </li>
+            <li>
+              <a href="http://liftweb.net/community">Join the Community</a>
+            </li>
+          </ul>
+        </div>
+      </aside>
 
-	<div>
-	<ul>
-	  <li>
-	    Who uses Lift?
-	    <a href="http://foursquare.com">Foursquare</a>
-	    <a href="http://vibe.novell.com">Novell</a>
-	    Yeah, lots of others, too.
-	  </li>
-
-	  <li>
-	    How do I get started?
-	    <a href="http://liftweb.net/getting_started">Getting Started</a>
-	    <a href="http://simply.liftweb.net">Simply Lift</a>
-	    <a href="http://exploring.liftweb.net">Exploring Lift</a>
-	  </li>
-
-	  <li>
-	    "But Lift doesn't do XXXX..."
-	    <br>
-	    Yeah, it probably does
-	    (e.g., lots of REST support, JSON, XML, etc.)
-	    <a href="http://liftweb.net/community">Join the community</a>
-	  </li>
-	</ul>
-        <hr class="space" />
-	</div>
-      </div>
-
-      <div class="column span-17 last">
+      <main class="main">
         <div id="content">The main content will get bound here</div>
-      </div>
+      </main>
 
-      <hr />
-      <div class="column span-23 last" style="text-align: center">
+      <footer class="footer">
         <h4 class="alt">
-          <a href="http://www.liftweb.net"><i>Lift</i></a> 
-	  is Copyright 2007-2011 WorldWide Conferencing, LLC.
-	  Distributed under an Apache 2.0 License.</h4>
-      </div>
+          <a href="http://www.liftweb.net"><i>Lift</i></a>
+          Copyright 2007-2026 Lift Committers and Contributors.
+          Distributed under an Apache 2.0 License.
+        </h4>
+      </footer>
     </div>
-    <script type="text/javascript">SyntaxHighlighter.all()</script> 
+
+    <script type="text/javascript">SyntaxHighlighter.all()</script>
   </body>
 </html>
