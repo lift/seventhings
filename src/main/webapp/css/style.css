@@ -518,34 +518,36 @@ select:focus {
   list-style: none;
   counter-reset: feature-counter;
   padding: 0;
-  margin: var(--space-xl) 0;
+  margin-left: 20px;
+  margin-bottom: 16px;
+  margin-top: var(--space-xl);
 }
 
 .feature-list li {
   counter-increment: feature-counter;
   position: relative;
-  padding-left: 3.5rem;
-  margin-bottom: var(--space-lg);
-  font-size: var(--text-lg);
-  line-height: var(--line-relaxed);
+  padding-left: 2rem;
+  margin-bottom: var(--space-md);
+  font-size: var(--text-base);
+  line-height: var(--line-normal);
 }
 
 .feature-list li::before {
   content: counter(feature-counter);
   position: absolute;
   left: 0;
-  top: 0;
+  top: 0.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   background-color: var(--accent);
   color: white;
   border-radius: 50%;
   font-weight: 700;
   font-family: var(--font-body);
-  font-size: var(--text-lg);
+  font-size: var(--text-sm);
 }
 
 .feature-list li a {
