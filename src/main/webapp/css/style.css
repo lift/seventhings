@@ -723,11 +723,42 @@ button.prev,
 button.cancel,
 button.next {
   min-width: 100px;
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-button.prev { composes: btn btn--secondary; }
-button.cancel { composes: btn btn--secondary; }
-button.next { composes: btn btn--primary; }
+button.prev,
+button.cancel {
+  background-color: transparent;
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+button.prev:hover,
+button.cancel:hover {
+  background-color: var(--surface-alt);
+}
+
+button.next {
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+button.next:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: white;
+}
 
 /* ========================================================================
    Animations
@@ -808,19 +839,19 @@ button.next { composes: btn btn--primary; }
     box-shadow: var(--shadow-lg);
   }
 
-  #nav-toggle:checked ~ .sidebar {
+  #nav-toggle:checked ~ .layout .sidebar {
     transform: translateX(0);
   }
 
-  #nav-toggle:checked ~ .header .hamburger span:nth-child(1) {
+  #nav-toggle:checked ~ .layout .header .hamburger span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
 
-  #nav-toggle:checked ~ .header .hamburger span:nth-child(2) {
+  #nav-toggle:checked ~ .layout .header .hamburger span:nth-child(2) {
     opacity: 0;
   }
 
-  #nav-toggle:checked ~ .header .hamburger span:nth-child(3) {
+  #nav-toggle:checked ~ .layout .header .hamburger span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
   }
 
