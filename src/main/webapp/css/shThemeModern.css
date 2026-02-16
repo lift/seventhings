@@ -1,0 +1,178 @@
+/**
+ * SyntaxHighlighter Modern Theme
+ * Catppuccin-inspired dark theme for code blocks
+ * Replaces shThemeDefault.css
+ */
+
+.syntaxhighlighter {
+  background-color: #1E1E2E !important;
+  border: 1px solid #313244 !important;
+  border-radius: 12px !important;
+  padding: 1rem !important;
+}
+
+.syntaxhighlighter .line.alt1,
+.syntaxhighlighter .line.alt2 {
+  background-color: #1E1E2E !important;
+}
+
+.syntaxhighlighter .line.highlighted.alt1,
+.syntaxhighlighter .line.highlighted.alt2 {
+  background-color: #313244 !important;
+}
+
+/* Gutter (line numbers) */
+.syntaxhighlighter .gutter {
+  border-right: 1px solid #313244 !important;
+  background-color: #181825 !important;
+  padding-right: 0.5rem !important;
+}
+
+.syntaxhighlighter .gutter .line {
+  border-right: none !important;
+  background-color: transparent !important;
+}
+
+.syntaxhighlighter .gutter .line.highlighted {
+  background-color: #313244 !important;
+}
+
+/* Line numbers */
+.syntaxhighlighter .gutter .line.alt1,
+.syntaxhighlighter .gutter .line.alt2 {
+  color: #6C7086 !important;
+}
+
+/* Code container */
+.syntaxhighlighter table td.code {
+  width: 100% !important;
+}
+
+.syntaxhighlighter table td.code .container {
+  position: relative !important;
+}
+
+.syntaxhighlighter table td.code .container textarea {
+  background: #1E1E2E !important;
+  color: #CDD6F4 !important;
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace !important;
+}
+
+/* Default text color */
+.syntaxhighlighter .plain,
+.syntaxhighlighter .plain a {
+  color: #CDD6F4 !important;
+}
+
+/* Keywords */
+.syntaxhighlighter .keyword {
+  color: #CBA6F7 !important;
+  font-weight: normal !important;
+}
+
+/* Strings */
+.syntaxhighlighter .string,
+.syntaxhighlighter .string a {
+  color: #A6E3A1 !important;
+}
+
+/* Comments */
+.syntaxhighlighter .comments,
+.syntaxhighlighter .comments a {
+  color: #6C7086 !important;
+  font-style: italic !important;
+}
+
+/* Functions and method names */
+.syntaxhighlighter .functions {
+  color: #89B4FA !important;
+  font-weight: normal !important;
+}
+
+/* Constants and numbers */
+.syntaxhighlighter .constants,
+.syntaxhighlighter .value {
+  color: #FAB387 !important;
+}
+
+/* Preprocessor directives */
+.syntaxhighlighter .preprocessor {
+  color: #F38BA8 !important;
+}
+
+.syntaxhighlighter .preprocessor a {
+  color: #F38BA8 !important;
+}
+
+/* Variables and identifiers */
+.syntaxhighlighter .variable {
+  color: #F9E2AF !important;
+}
+
+/* Script background (for inline scripts) */
+.syntaxhighlighter .script {
+  background-color: #1E1E2E !important;
+}
+
+/* Color values and special values */
+.syntaxhighlighter .color1,
+.syntaxhighlighter .color1 a {
+  color: #94E2D5 !important;
+}
+
+.syntaxhighlighter .color2,
+.syntaxhighlighter .color2 a {
+  color: #89DCEB !important;
+}
+
+.syntaxhighlighter .color3,
+.syntaxhighlighter .color3 a {
+  color: #F5C2E7 !important;
+}
+
+/* Remove default borders and backgrounds */
+.syntaxhighlighter table {
+  border: none !important;
+}
+
+.syntaxhighlighter table caption {
+  color: #CDD6F4 !important;
+  background-color: #181825 !important;
+  border-bottom: 1px solid #313244 !important;
+  padding: 0.5rem !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+/* Toolbar (if visible) */
+.syntaxhighlighter .toolbar {
+  background: #181825 !important;
+  border-bottom: 1px solid #313244 !important;
+}
+
+.syntaxhighlighter .toolbar a {
+  color: #CDD6F4 !important;
+}
+
+.syntaxhighlighter .toolbar a:hover {
+  color: #CBA6F7 !important;
+}
+
+/* Scrollbars */
+.syntaxhighlighter ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.syntaxhighlighter ::-webkit-scrollbar-track {
+  background: #181825;
+  border-radius: 4px;
+}
+
+.syntaxhighlighter ::-webkit-scrollbar-thumb {
+  background: #313244;
+  border-radius: 4px;
+}
+
+.syntaxhighlighter ::-webkit-scrollbar-thumb:hover {
+  background: #45475A;
+}
