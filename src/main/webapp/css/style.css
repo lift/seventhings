@@ -725,9 +725,49 @@ button.next {
   min-width: 100px;
 }
 
-button.prev { composes: btn btn--secondary; }
-button.cancel { composes: btn btn--secondary; }
-button.next { composes: btn btn--primary; }
+/* button.prev and button.cancel → .btn + .btn--secondary styles */
+button.prev,
+button.cancel {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+
+button.prev:hover,
+button.cancel:hover {
+  background-color: var(--surface-alt);
+}
+
+/* button.next → .btn + .btn--primary styles */
+button.next {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--accent);
+  color: white;
+}
+
+button.next:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: white;
+}
 
 /* ========================================================================
    Animations
