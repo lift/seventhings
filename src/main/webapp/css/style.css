@@ -848,19 +848,19 @@ button.next:hover {
     box-shadow: var(--shadow-lg);
   }
 
-  #nav-toggle:checked ~ .sidebar {
+  #nav-toggle:checked ~ .layout .sidebar {
     transform: translateX(0);
   }
 
-  #nav-toggle:checked ~ .header .hamburger span:nth-child(1) {
+  #nav-toggle:checked ~ .layout .header .hamburger span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
 
-  #nav-toggle:checked ~ .header .hamburger span:nth-child(2) {
+  #nav-toggle:checked ~ .layout .header .hamburger span:nth-child(2) {
     opacity: 0;
   }
 
-  #nav-toggle:checked ~ .header .hamburger span:nth-child(3) {
+  #nav-toggle:checked ~ .layout .header .hamburger span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
   }
 
