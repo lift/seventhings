@@ -22,19 +22,19 @@ The application showcases the following seven Lift features:
 
 - **Language**: Scala 2.13.18
 - **Framework**: Lift Web Framework 4.0.0-M4
-- **Build System**: SBT (Scala Build Tool) with sbt-war plugin
-- **Server**: Jetty 11.0.25 (embedded for testing and demo)
+- **Build System**: SBT 1.10.0 with sbt-war 5.1.1 plugin
+- **Server**: Jetty 11.0.25 (test scope; used for local development and demo)
 - **Testing**: Specs2 4.21.0 with JUnit
-- **Database**: H2 (for demonstration purposes)
-- **Logging**: Logback
-- **JavaScript**: jQuery 3.7.1
+- **Database**: H2 1.4.200 (for demonstration purposes)
+- **Logging**: Logback 1.5.16
+- **JavaScript**: jQuery 3.7.1 (via WebJar)
 
 ## Building and Running
 
 ### Prerequisites
 
-- Java 11 or later (required for Jetty 11)
-- SBT (Scala Build Tool)
+- Java 11 or later (required by both Lift 4.0+ and Jetty 11)
+- SBT 1.10.0 or later
 
 ### Quick Start
 
@@ -79,7 +79,8 @@ src/main/
 │   └── net/liftweb/seventhings/
 │       ├── snippet/                # Lift snippets (view logic components)
 │       ├── comet/                  # Comet actors for real-time updates
-│       └── model/                  # Data models (if any)
+│       ├── view/                   # View helpers
+│       └── model/                  # Data models
 ├── webapp/                         # HTML templates and static assets
 └── resources/
     ├── i18n/                       # Internationalization properties files
@@ -101,7 +102,7 @@ src/main/
 - Upgraded to Scala 2.13.18 and Lift 4.0.0-M4 for modern language features and Jakarta Servlet 6.1 support
 - Migrated from xsbt-web-plugin to sbt-war 5.1.1 build plugin
 - Updated to Jetty 11.0.25 with Jakarta Servlet API
-- Replaced lift-jquery-module with jQuery 3.7.1 WebJar (now bundled in lift-webkit)
+- Replaced lift-jquery-module with jQuery 3.7.1 via `org.webjars.bower` WebJar
 - Fixed deprecated Scala 2.13 procedure syntax throughout codebase
 - Implemented Content Security Policy (CSP) for enhanced security
 - Added Logback logging to prevent disk space issues
@@ -133,8 +134,10 @@ This project is part of the Lift web framework community projects.
 ## Additional Information
 
 For more information about the Lift web framework, visit:
-- [Lift Web Framework Official Site](https://www.liftweb.net/)
-- [Lift Framework Documentation](https://accessing-and-modifying-lift-properties.lift.rocks/)
+- [Lift Web Framework Official Site](https://liftweb.net/)
+- [Simply Lift (online book)](http://simply.liftweb.net/)
+- [The Lift Cookbook](http://cookbook.liftweb.net/)
+- [Lift Framework on GitHub](https://github.com/lift/framework)
 
 ## Contributing
 
